@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+ 
+{% block title %}
+Portfolio
+{% endblock title %}
+
+{% block content%}
+
+<section id="hero">
+	{% include 'components/hero.html' %}
+</section>
+
+<section id="about" class="about-section">
+	{% include 'components/about.html' %}
+</section>
+
+<section id="projects" class="projects-section">
+	{% include 'components/projects.html' %}
+</section>
+
+<section id="contact" class="contact-section">
+	{% include 'components/contact.html' %}
+</section>
+
+{% endblock content %}
+
+{% block extra_js %}
+	<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}
