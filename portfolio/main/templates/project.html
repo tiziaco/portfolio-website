@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+ 
+{% block title %}
+Project detail 
+{% endblock title %}
+
+{% block extrahead %}
+	<link rel="stylesheet" href="{% static 'css/project.css' %}">
+{% endblock extrahead %}
+
+{% block content%}
+
+	<section id="projrct-detail">
+		{% include 'components/project_detail.html' %}
+	</section>
+
+{% endblock content %}
+
+{% block extra_js %}
+
+{% endblock %}
