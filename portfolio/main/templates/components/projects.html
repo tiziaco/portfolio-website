@@ -1,7 +1,7 @@
 <!-- templates/components/projects.html -->
 <div class="container">
 	<h2 class="section-title">// PROJECTS</h2>
-	<div class="btn-group filter-buttons" role="group">
+	<div class="btn-group filter-buttons d-flex justify-content-center" role="group">
 		<!-- Loop through tags and render each tag button -->
 		<button type="button" class="btn btn-primary tag" data-tag="all">All</button>
 		{% for tag in tags %}
@@ -13,9 +13,9 @@
 	<div class="row mt-4">
 		<!-- Loop through projects and render each project card -->
 		{% for project in projects %}
-		<div class="col-md-4">
+		<div class="col-md-4 col-sm-6 flex-wrap">
 			<div class="card project-card" data-tags="{{ project.tags.all|join:', '|lower }}" >
-				<img src="https://fastly.picsum.photos/id/721/400/300.jpg?hmac=59yoVSg1v667lIEBeF4HHvUsoSKbYIuI3ZXawMtHZzA" class="card-img-top" alt="Project Image">
+				<img src="{{ project.card_img.image.url }}" class="card-img-top" alt="Project Image">
 				<div class="card-body">
 					<h5 class="card-title">{{ project.title }}</h5>
 					<p class="card-description">
