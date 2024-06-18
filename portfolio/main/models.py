@@ -1,6 +1,6 @@
 from django.db import models
+from django.conf import settings
 
-# Create your models here.
 class Tag(models.Model):
 	name = models.CharField(max_length=50, unique=True)
 
@@ -14,6 +14,7 @@ class Stack(models.Model):
 		return self.name
 
 class Project(models.Model):
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True,related_name='projects')
 	title = models.CharField(max_length=200)
 	card_img = models.OneToOneField('ProjectImage', on_delete=models.SET_NULL, blank=True, null=True, related_name='card_project')
 	description = models.TextField()
