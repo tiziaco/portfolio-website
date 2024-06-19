@@ -10,6 +10,14 @@ def populate_slugs(apps, schema_editor):
             project.slug = slugify(project.title)
             project.save()
 
+def populate_stack_defaults(apps, schema_editor):
+    Stack = apps.get_model('yourapp', 'Stack')
+    default_stacks = ['Python', 'C', 'C++', 'JavaScript', 'HTML', 'CSS', 'SQL', 
+                      'Bootstrap','Django', 'Flask', 'LlamaIndex']
+
+    for stack_name in default_stacks:
+        Stack.objects.create(name=stack_name)
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -23,4 +31,5 @@ class Migration(migrations.Migration):
             field=models.SlugField(blank=True, null=True, unique=True),
         ),
         migrations.RunPython(populate_slugs),
+        migrations.RunPython(populate_stack_defaults),
     ]
