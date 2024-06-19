@@ -6,7 +6,7 @@
 	color: white;
 	display: flex;
 	align-items: center;
-	justify-content: left;
+	/* justify-content: left; */
 	text-align: center;
 	/* padding-left: 12rem; */
 }
@@ -19,7 +19,7 @@
 .hero p {
 	font-size: 2rem;
 	margin: 0;
-	text-align: left;
+	/* text-align: left; */
 }
 
 .hero .title-line {
@@ -63,19 +63,10 @@
 	color: #333;
 }
 
-.skills a {
-	color: #0056b3;
-	text-decoration: none;
-}
-
-.skills a:hover {
-	text-decoration: underline;
-}
-
 .profile-image {
-	width: 250px;
-	height: 250px;
-	border-radius: 50%;
+	width: 300px;
+	height: 400px;
+	border-radius: 5%;
 	object-fit: cover;
 	background-color: #fff;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -86,19 +77,6 @@
 	height: 100vh;
 	padding: 60px 0;
 	background-color: #f8f9fa;
-}
-
-/* Ensure that the row uses CSS Grid */
-.row {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px; /* Adjust the gap between columns as needed */
-}
-
-/* Ensure that the columns stretch to the same height */
-.col-md-4, .col-sm-6 {
-    display: flex;
-    flex-direction: column;
 }
 
 .section-title {
@@ -130,6 +108,21 @@
 }
 
 /* Additional styles to ensure equal height */
+
+.card-link-no-underline {
+    text-decoration: none; /* Remove underline from the link itself */
+}
+
+.card-link-no-underline .card-title,
+.card-link-no-underline .card-description {
+    text-decoration: none; /* Ensure underline is removed from text elements */
+    color: inherit; /* Keep the text color unchanged */
+}
+
+.card-link-no-underline:hover .card-title,
+.card-link-no-underline:hover .card-description {
+    text-decoration: none; /* Ensure underline is removed on hover */
+}
 
 
 .project-card .card-img-top {
