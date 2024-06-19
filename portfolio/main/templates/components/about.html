@@ -3,16 +3,16 @@
 	<h2 class="section-title">// ABOUT</h2>
 	<div class="row align-items-center">
 		<div class="col-md-4 text-center">
-			<img src="https://avatar.iran.liara.run/public/boy" alt="Profile Image" class="profile-image">
+			<img src="https://i.pravatar.cc/400?img=66" alt="Profile Image" class="profile-image">
 		</div>
-		<div class="col-md-8 px-6 d-flex flex-column justify-content-between">
+		<div class="col-md-8 px-6 ">
 			<p class="description">
 				{{ user_about }}
 			</p>
 			<h3 class="skills-title">Skills</h3>
-			<p class="skills">
-				<a>Python</a> || <a>C</a> || <a>JavaScript</a> || <a>HTML</a> || <a>CSS</a> || <a>SQL</a>
-			</p>
+			{% for stack in stacks %}
+				<span class="badge text-bg-secondary">{{ stack.name }}</span>
+            {% endfor %}
 		</div>
 	</div>
 </div>

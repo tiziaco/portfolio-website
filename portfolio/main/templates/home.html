@@ -28,8 +28,13 @@ Portfolio
 	{% include 'components/contact.html' %}
 </section>
 
+<section id="footer" class="footer-section">
+	{% include 'components/footer.html' %}
+</section>
+
 {% endblock content %}
 
 {% block extra_js %}
+	<script src="{% static 'js/contact_form.js' %}"></script>
 	<script src="{% static 'js/home.js' %}"></script>
 {% endblock %}
