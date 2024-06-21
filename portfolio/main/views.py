@@ -29,6 +29,7 @@ def contact(request):
 		my_mail = request.user.email
 		print("*** TEST ***")
 		print(my_mail)
+		print(email)
 
 		# Construct the email content
 		subject = f"New contact form submission from {name}"
@@ -38,8 +39,8 @@ def contact(request):
 		send_mail(
 			subject,
 			message_body,
-			my_mail,  # Replace with your "from" email address
-			[email],  # Replace with the recipient's email address
+			email,  # Replace with your "from" email address
+			[my_mail],  # Replace with the recipient's email address
 		)
 
 		# Return a JSON response with status 200
