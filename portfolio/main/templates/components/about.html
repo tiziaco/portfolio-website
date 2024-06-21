@@ -1,18 +1,20 @@
 <!-- templates/components/about.html -->
 <div class="container">
-	<h2 class="section-title">// ABOUT</h2>
-	<div class="row align-items-center">
+	<div class="row row-cols-md-1 align-items-center">
+		<h2 class="section-title">// ABOUT</h2>
 		<div class="col-md-4 text-center">
 			<img src="https://i.pravatar.cc/400?img=66" alt="Profile Image" class="profile-image">
 		</div>
-		<div class="col-md-8 px-6 ">
-			<p class="description">
-				{{ user_about }}
-			</p>
-			<h3 class="skills-title">Skills</h3>
-			{% for stack in stacks %}
-				<span class="badge text-bg-secondary">{{ stack.name }}</span>
-            {% endfor %}
+		<div class="col-md-8">
+			<div class="container px-5 ms-5 pt-5"> <!-- TODO: make padding adaptive -->
+				<p class="description">
+					{{ user_about }}
+				</p>
+				<h3 class="skills-title">Skills</h3>
+				{% for stack in stacks %}
+					<span class="badge text-bg-secondary">{{ stack.name }}</span>
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 </div>

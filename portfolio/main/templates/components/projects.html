@@ -1,20 +1,24 @@
 <!-- templates/components/projects.html -->
 <div class="container">
-	<div class="row d-flex align-items-center justify-content-between py-3">
+	<div class="row d-flex align-items-center justify-content-between">
 		<div class="col">
+
 			<h2 class="section-title">// PROJECTS</h2>
-			<div class="btn-group filter-buttons d-flex justify-content-center" role="group">
-				<!-- Loop through tags and render each tag button -->
-				<button type="button" class="btn btn-primary tag" data-tag="all">All</button>
-				{% for tag in tags %}
-				<button type="button" class="btn btn-primary tag" data-tag="{{ tag.name|lower }}">
-					{{ tag.name }}
-				</button>
-				{% endfor %}
+			
+			<div class="container d-flex align-items-center justify-content-center py-3">
+				<div class="btn-group filter-buttons" role="group">
+					<!-- Loop through tags and render each tag button -->
+					<button type="button" class="btn btn-primary tag" data-tag="all">All</button>
+					{% for tag in tags %}
+					<button type="button" class="btn btn-primary tag" data-tag="{{ tag.name|lower }}">
+						{{ tag.name }}
+					</button>
+					{% endfor %}
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+	<div class="row row-cols-1 row-cols-md-3 px-5 text-center">
 		
 		<!-- Loop through projects and render each project card -->
 		{% for project in projects %}

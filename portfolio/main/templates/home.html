@@ -12,26 +12,27 @@ Portfolio
 
 {% block content%}
 
-<section id="hero">
-	{% include 'components/hero.html' %}
-</section>
+<div class="container-fluid base">
+	<section id="hero">
+		{% include 'components/hero.html' %}
+	</section>
 
-<section id="about" class="about-section">
-	{% include 'components/about.html' %}
-</section>
+	<section id="about" class="about-section">
+		{% include 'components/about.html' %}
+	</section>
 
-<section id="projects" class="projects-section">
-	{% include 'components/projects.html' %}
-</section>
+	<section id="projects" class="projects-section">
+		{% include 'components/projects.html' %}
+	</section>
 
-<section id="contact" class="contact-section">
-	{% include 'components/contact.html' %}
-</section>
+	<section id="contact" class="contact-section">
+		{% include 'components/contact.html' %}
+	</section>
 
-<section id="footer" class="footer-section">
-	{% include 'components/footer.html' %}
-</section>
-
+	<section id="footer" class="footer-section">
+		{% include 'components/footer.html' %}
+	</section>
+</div>
 {% endblock content %}
 
 {% block extra_js %}

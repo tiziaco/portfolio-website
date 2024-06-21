@@ -3,9 +3,17 @@ html {
 	scroll-behavior: smooth;
 }
 
-h2 {
-	padding-top: 3rem;
-	padding-bottom: 3rem;
+.container.base {
+	background-color: #f8f9fa; /* Change this color to whatever you like */
+}
+
+.section-title {
+	font-size: 24px;
+	font-weight: bold;
+	color: #ff007f;
+	padding-top: 4rem;
+	padding-bottom: 2rem;
+	text-transform: uppercase;
 }
 
 /* Navbar section */
