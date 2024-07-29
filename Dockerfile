@@ -1,121 +1,45 @@
-# syntax=docker/dockerfile:1
-# Keep this syntax directive! It's used to enable Docker BuildKit
+# Use an official Python runtime as a parent image
+FROM python:3.12-slim
 
-# Based on https://github.com/python-poetry/poetry/discussions/1879?sort=top#discussioncomment-216865
-# but I try to keep it updated (see history)
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-################################
-# PYTHON-BASE
-# Sets up all our shared environment variables
-################################
-FROM python:3.12-slim as python-base
-
-    # python
-ENV PYTHONUNBUFFERED=1 \
-    # prevents python creating .pyc files
-    PYTHONDONTWRITEBYTECODE=1 \
-    \
-    # pip
-    PIP_DISABLE_PIP_VERSION_CHECK=on \
-    PIP_DEFAULT_TIMEOUT=100 \
-    \
-    # poetry
-    # https://python-poetry.org/docs/configuration/#using-environment-variables
-    POETRY_VERSION=1.8.2 \
-    # make poetry install to this location
-    POETRY_HOME="/opt/poetry" \
-    # make poetry create the virtual environment in the project's root
-    # it gets named `.venv`
-    POETRY_VIRTUALENVS_IN_PROJECT=true \
-    # do not ask any interactive question
-    POETRY_NO_INTERACTION=1 \
-    \
-    # paths
-    # this is where our requirements + virtual environment will live
-    PYSETUP_PATH="/opt/pysetup" \
-    VENV_PATH="/opt/pysetup/.venv"
-
-
-# prepend poetry and venv to path
-ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
-
-
-################################
-# BUILDER-BASE
-# Used to build deps + create our virtual environment
-################################
-FROM python-base as builder-base
-RUN apt-get update \
-    && apt-get install --no-install-recommends -y \
-        # deps for installing poetry
-        curl \
-        # deps for building python deps
-        build-essential
-
-# install poetry - respects $POETRY_VERSION & $POETRY_HOME
-# The --mount will mount the buildx cache directory to where 
-# Poetry and Pip store their cache so that they can re-use it
-RUN --mount=type=cache,target=/root/.cache \
-    curl -sSL https://install.python-poetry.org | python3 -
-
-# copy project requirement files here to ensure they will be cached.
-WORKDIR $PYSETUP_PATH
-COPY poetry.lock pyproject.toml ./
-
-# install runtime deps - uses $POETRY_VIRTUALENVS_IN_PROJECT internally
-RUN --mount=type=cache,target=/root/.cache \
-    poetry install
-
-
-################################
-# DEVELOPMENT
-# Image used during development / testing
-################################
-FROM python-base as development
-ENV DJANGO_DEBUG=True
-WORKDIR $PYSETUP_PATH
-
-# copy in our built poetry + venv
-COPY --from=builder-base $POETRY_HOME $POETRY_HOME
-COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
-
-# quicker install as runtime deps are already installed
-RUN --mount=type=cache,target=/root/.cache \
-    poetry install
-
-# Copy django app
-COPY ./portfolio /app
+# Set work directory
 WORKDIR /app
 
-# Copy entrypoint script
-COPY ./entrypoint.sh /
-RUN chmod +x /entrypoint.sh
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    gcc \
+    curl
 
+# Install Poetry
+RUN curl -sSL https://install.python-poetry.org | python3 -
 
-#EXPOSE 8000
+# Add Poetry to PATH
+ENV PATH="/root/.local/bin:$PATH"
 
-COPY ./entrypoint.sh /
-ENTRYPOINT ["sh", "/entrypoint.sh"]
+# Copy Poetry configuration
+COPY pyproject.toml poetry.lock /app/
 
+# Install Python dependencies
+RUN poetry install --no-root
 
-################################
-# PRODUCTION
-# Final image used for runtime
-################################
-FROM python-base as production
-ENV DJANGO_DEBUG=False
-COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
-COPY ./app /app/
-WORKDIR /app
+# Copy the application code to the work directory
+COPY . /app/
 
-# Copy entrypoint script
-COPY ./entrypoint.sh /
-RUN chmod +x /entrypoint.sh
+# Change to the project directory
+WORKDIR /app/portfolio
 
-# Collect static files
-RUN python manage.py collectstatic --no-input
+# Make entrypoint.sh executable
+RUN chmod +x /app/entrypoint.sh
 
-# Entrypoint for production
-ENTRYPOINT ["sh", "/entrypoint.sh"]
+# Expose the port the app runs on
+EXPOSE 8000
 
-#CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "main:app"]
+# Set the entrypoint
+ENTRYPOINT ["/app/entrypoint.sh"]
+
+# Default command
+CMD ["gunicorn", "portfolio-website.wsgi:application", "--bind", "0.0.0.0:8000"]
