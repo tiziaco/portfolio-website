@@ -28,7 +28,7 @@ def home(request):
 	return render(request, 'home.html', 
 				{"projects": projects, 
 				"tags": tags,
-				"user_about": user_about,
+				"user": superuser,
 				"stacks": stacks})
 
 def project(request, project_slug):
