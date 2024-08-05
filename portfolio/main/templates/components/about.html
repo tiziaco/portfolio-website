@@ -3,12 +3,20 @@
 	<div class="row row-cols-md-1 align-items-center">
 		<h2 class="section-title">// ABOUT</h2>
 		<div class="col-md-4 text-center">
-			<img src="https://i.pravatar.cc/400?img=66" alt="Profile Image" class="profile-image">
+			{% if user.about_picture %}
+				<img src="{{ user.about_picture.url }}" class="img-fluid" alt="Profile picture">
+			{% else %}
+				<img src="https://avatar.iran.liara.run/public" class="img-fluid" alt="Default profile picture">
+			{% endif %}
 		</div>
 		<div class="col-md-8">
 			<div class="container px-5 ms-5 pt-5"> <!-- TODO: make padding adaptive -->
 				<p class="description">
-					{{ user_about }}
+					{% if user.about %}
+						{{ user.about }}
+					{% else %}
+						Please add an about section from the admin page.
+					{% endif %}
 				</p>
 				<h3 class="skills-title">Skills</h3>
 				{% for stack in stacks %}
