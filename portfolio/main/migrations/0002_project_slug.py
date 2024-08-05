@@ -11,7 +11,7 @@ def populate_slugs(apps, schema_editor):
             project.save()
 
 def populate_stack_defaults(apps, schema_editor):
-    Stack = apps.get_model('yourapp', 'Stack')
+    Stack = apps.get_model('main', 'Stack')
     default_stacks = ['Python', 'C', 'C++', 'JavaScript', 'HTML', 'CSS', 'SQL', 
                       'Bootstrap','Django', 'Flask', 'LlamaIndex']
 
