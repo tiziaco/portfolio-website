@@ -4,12 +4,27 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import Project, Tag, Stack
+from django.contrib.auth import get_user_model
+from django.core.exceptions import ObjectDoesNotExist
 
 def home(request):
 	projects = Project.objects.all()
 	tags = Tag.objects.all()
 	stacks = Stack.objects.all()
-	user_about = request.user.about if request.user is not None else "Default about text or empty string"
+
+	# Get the custom user model
+	User = get_user_model()
+
+	# Fetch the superuser
+	try:
+		superuser = User.objects.filter(is_superuser=True).first()
+		if superuser:
+			user_about = superuser.about
+		else:
+			user_about = "Default about text or empty string"
+	except ObjectDoesNotExist:
+		user_about = "Please create new superuser in admin section."
+	
 	return render(request, 'home.html', 
 				{"projects": projects, 
 				"tags": tags,
