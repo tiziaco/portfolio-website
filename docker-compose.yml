@@ -7,10 +7,9 @@ services:
       - .env
     build:
       context: .
-      target: runtime
+      # target: runtime
     ports:
       - "8000:8000"
-    command: gunicorn portfolio.wsgi:application --bind 0.0.0.0:8000
   nginx:
     build: ./nginx
     volumes:
