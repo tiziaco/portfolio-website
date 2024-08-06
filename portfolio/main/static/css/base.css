@@ -8,18 +8,27 @@ html {
 }
 
 .section-title {
-	font-size: 24px;
+	font-size: 2rem;
 	font-weight: bold;
 	color: #ff007f;
-	padding-top: 4rem;
+	padding-top: 6rem;
 	padding-bottom: 2rem;
 	text-transform: uppercase;
 }
 
 /* Navbar section */
-.navbar-brand {
+.navbar .navbar-brand {
 	font-family: 'Koulen', sans-serif;
 	font-weight: bold;
-	/* padding-left: 40px;
-	padding-right: 60px; */
+	font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+	font-weight: bold;
+	font-size: 1.1rem;
+}
+
+/* Change the hover color for navbar links */
+.navbar-nav .nav-link:hover {
+    color: #ff007f; /* Replace this with your desired hover color */
 }
