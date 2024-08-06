@@ -11,12 +11,19 @@
 				<strong>Contact me now or connect with me!</strong>
 			</p>
 			<div class="social-links">
-				<a href="https://github.com/yourgithub" target="_blank">
-					<i class="bi bi-github social-logo" alt="GitHub"></i>
-				</a>
-				<a href="https://www.linkedin.com/in/yourlinkedin" target="_blank">
-					<i class="bi bi-linkedin social-logo"  alt="LinkedIn"></i>
-				</a>
+				{% if user.github %}
+					<a href={{user.github}} target="_blank">
+				{% else %}
+					<a href="https://github.com/yourgithub" target="_blank">
+				{% endif %}
+					<i class="bi bi-github social-logo" alt="GitHub"></i></a>
+				
+				{% if user.linkedin %}
+					<a href={{user.linkedin}} target="_blank">
+				{% else %}
+					<a href="https://www.linkedin.com/in/yourlinkedin" target="_blank">
+				{% endif %}
+					<i class="bi bi-linkedin social-logo"  alt="LinkedIn"></i></a>
 			</div>
 		</div>
 		<!-- Right Column: Contact Form -->
@@ -35,7 +42,9 @@
 					<label for="message">Message</label>
 					<textarea class="form-control" id="message" name="message" rows="5" required></textarea>
 				</div>
-				<button type="submit" class="btn btn-primary">Send</button>
+				<div class="button-container">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
 			</form>
 			<div id="responseMessage" class="mt-3"></div>
 		</div>
