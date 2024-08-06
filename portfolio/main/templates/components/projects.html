@@ -5,7 +5,7 @@
 
 			<h2 class="section-title">// PROJECTS</h2>
 			
-			<div class="container d-flex align-items-center justify-content-center py-3">
+			<div class="container d-flex align-items-center justify-content-center pb-4">
 				<div class="btn-group filter-buttons" role="group">
 					<!-- Loop through tags and render each tag button -->
 					<button type="button" class="btn btn-primary tag" data-tag="all">All</button>
@@ -25,12 +25,20 @@
 		<div class="col">
 			<a href="{% url 'project_detail' project.slug %}" class="card-link-no-underline">
 				<div class="card project-card mb-4 rounded-3" data-tags="{{ project.tags.all|join:', '|lower }}">
-					<img src="{{ project.card_img.image.url }}" class="card-img-top" alt="Project Image">
+					<!-- <img src="{{ project.card_img.image.url }}" class="card-img-top" alt="Project Image"> -->
 					<div class="card-body">
+						<div class="icon-container">
+							<i class="bi bi-box-arrow-up-right"></i>
+						</div>
 						<h5 class="card-title">{{ project.title }}</h5>
 						<p class="card-description">
 							{{ project.description }}
 						</p>
+						<div class="stack-container">
+							{% for stack in project.stack.all %}
+								<span class="stack-span">{{ stack.name }}</span>
+							{% endfor %}
+						</div>
 					</div>
 				</div>
 			</a>			
