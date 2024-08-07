@@ -20,6 +20,15 @@ function filterByTag(selectedTag, $projects) {
 	});
 }
 
+function changeButtonColor($tags, $clickedTag) {
+	// Remove active class from all buttons
+	$tags.removeClass('active');
+
+	// Add active class to the clicked button
+	console.log("Filter button clicked: " + $clickedTag);
+	$clickedTag.addClass('active');
+}
+
 $(document).ready(function() {
 	const $tags = $(".tag");
 	const $projects = $(".project-card");
@@ -27,8 +36,16 @@ $(document).ready(function() {
 	$tags.on("click", function() {
 		const selectedTag = $(this).data('tag');
 		console.log("Filter button clicked: " + selectedTag);
+
+		// Change button colors
+		changeButtonColor($tags, $(this));
+
+		// Filter projects
 		filterByTag(selectedTag, $projects);
 	});
+
+	// Initialize with the 'all' button active
+    changeButtonColor($tags, $('.tag[data-tag="all"]'));
 });
 
 // $(document).ready(function() {
