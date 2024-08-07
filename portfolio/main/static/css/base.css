@@ -1,16 +1,18 @@
+@import url('variables.css');
+
 /* Global style settings */
 html {
 	scroll-behavior: smooth;
 }
 
 .container.base {
-	background-color: #f8f9fa; /* Change this color to whatever you like */
+	background-color: var(--background-color); /* Change this color to whatever you like */
 }
 
 .section-title {
 	font-size: 2rem;
 	font-weight: bold;
-	color: #ff007f;
+	color: var(--primary-color);
 	padding-top: 6rem;
 	padding-bottom: 2rem;
 	text-transform: uppercase;
@@ -30,5 +32,5 @@ html {
 
 /* Change the hover color for navbar links */
 .navbar-nav .nav-link:hover {
-    color: #ff007f; /* Replace this with your desired hover color */
+    color: var(--primary-color); /* Replace this with your desired hover color */
 }
