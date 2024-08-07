@@ -5,8 +5,10 @@ html {
 	scroll-behavior: smooth;
 }
 
-.container.base {
-	background-color: var(--background-color); /* Change this color to whatever you like */
+.container-fluid.base {
+	background-color: transparent !important;
+	position: relative;
+    z-index: 1;
 }
 
 .section-title {
