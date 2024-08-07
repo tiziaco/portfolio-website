@@ -5,16 +5,14 @@
 
 			<h2 class="section-title">// PROJECTS</h2>
 			
-			<div class="container d-flex align-items-center justify-content-center pb-4">
-				<div class="btn-group filter-buttons" role="group">
-					<!-- Loop through tags and render each tag button -->
-					<button type="button" class="btn btn-primary tag" data-tag="all">All</button>
-					{% for tag in tags %}
-					<button type="button" class="btn btn-primary tag" data-tag="{{ tag.name|lower }}">
-						{{ tag.name }}
-					</button>
-					{% endfor %}
-				</div>
+			<div class="container d-flex align-items-center justify-content-center pb-4 gap-2 filter-buttons">
+				<!-- Loop through tags and render each tag button -->
+				<button type="button" class="btn active btn-primary tag filter-button" data-tag="all">All</button>
+				{% for tag in tags %}
+				<button type="button" class="btn btn-primary tag filter-button" data-tag="{{ tag.name|lower }}">
+					{{ tag.name }}
+				</button>
+				{% endfor %}
 			</div>
 		</div>
 	</div>
@@ -36,7 +34,7 @@
 						</p>
 						<div class="stack-container">
 							{% for stack in project.stack.all %}
-								<span class="stack-span">{{ stack.name }}</span>
+								<span class="stack-span badge rounded-pill text-bg-secondary">{{ stack.name }}</span>
 							{% endfor %}
 						</div>
 					</div>
