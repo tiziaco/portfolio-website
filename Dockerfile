@@ -42,4 +42,4 @@ EXPOSE 8000
 ENTRYPOINT ["/app/entrypoint.sh"]
 
 # Default command
-CMD ["gunicorn", "portfolio.wsgi:application", "--bind", "0.0.0.0:8000"]
+# CMD ["gunicorn", "portfolio.wsgi:application", "--bind", "0.0.0.0:8000"]
