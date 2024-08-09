@@ -1,35 +1,49 @@
 
 services:
   django_gunicorn:
+    build:
+      context: .
+    restart: always
     volumes:
       - static:/static
       - /var/certbot/conf:/etc/letsencrypt/:ro
     env_file:
       - .env
-    build:
-      context: .
       # target: runtime
     ports:
       - "8000:8000"
 
   nginx:
-    build: ./nginx
+    build:
+      context: ./docker/nginx
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - django_gunicorn
     volumes:
       - static:/static
-      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - certbot-web:/vol/www
+      - proxy-dhparams:/vol/proxy
+      - certbot-certs:/etc/letsencrypt
     ports:
       - "80:80"
       - "443:443"
-    depends_on:
-      - django_gunicorn
 
   certbot:
-    image: certbot/certbot:latest
+    build:
+      context: ./docker/certbot
+    command: echo "Skipping..."
+    env_file:
+      - .env
     volumes:
-      - /var/certbot/conf:/etc/letsencrypt/:rw
-      - /var/certbot/www/:/var/www/certbot/:rw
+      - certbot-web:/vol/www
+      - certbot-certs:/etc/letsencrypt/
     depends_on:
       - nginx
   
 volumes:
   static:
+  certbot-web:
+  proxy-dhparams:
+  certbot-certs:
