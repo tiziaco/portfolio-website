@@ -3,7 +3,7 @@ services:
   django_gunicorn:
     build:
       context: .
-    restart: always
+    # restart: always
     volumes:
       - static:/static
       - /var/certbot/conf:/etc/letsencrypt/:ro

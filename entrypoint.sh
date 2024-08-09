@@ -27,7 +27,7 @@ if [ "$DJANGO_DEBUG" = "True" ]; then
 else
     # Start Gunicorn server for production
     echo "\n*** Running server in Deploy mode..."
-    exec pwd
+    exec ls ../
     gunicorn portfolio.wsgi:application --bind 0.0.0.0:8000 -c ../gunicorn_conf.py
     # exec "$@"
 fi
