@@ -3,9 +3,11 @@ services:
   django_gunicorn:
     build:
       context: .
-    # restart: always
+    restart: always
     volumes:
       - static:/static
+      - data:/app/portfolio/db.sqlite3
+      - media:/app/portfolio/media
       - /var/certbot/conf:/etc/letsencrypt/:ro
     env_file:
       - .env
@@ -44,6 +46,8 @@ services:
   
 volumes:
   static:
+  data:
+  media:
   certbot-web:
   proxy-dhparams:
   certbot-certs:
