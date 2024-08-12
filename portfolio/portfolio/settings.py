@@ -32,7 +32,7 @@ DEBUG = os.getenv('DJANGO_DEBUG')
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://www.' + os.getenv('DOMAIN_NAME'),
+    'https://www.developertiz.com',
 ]
 
 print("*** TEST ***")
