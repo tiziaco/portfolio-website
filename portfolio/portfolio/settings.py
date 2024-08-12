@@ -35,6 +35,11 @@ CSRF_TRUSTED_ORIGINS = [
     'https://www.' + os.getenv('DOMAIN_NAME'),
 ]
 
+print("*** TEST ***")
+print(CSRF_TRUSTED_ORIGINS[0])
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 # Application definition
 
