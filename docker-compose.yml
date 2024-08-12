@@ -6,7 +6,7 @@ services:
     restart: always
     volumes:
       - static:/static
-      - data:/app/portfolio/db.sqlite3
+      - data:/app/portfolio/
       - media:/app/portfolio/media
       - /var/certbot/conf:/etc/letsencrypt/:ro
     env_file:
