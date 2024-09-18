@@ -29,17 +29,24 @@ SECRET_KEY = os.getenv('DJANGO_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG')
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = ['www.developertiz.com', 'localhost', '127.0.0.1']
+# 'http://' + os.getenv('DOMAIN_NAME'),
+CSRF_COOKIE_SECURE = False
 CSRF_TRUSTED_ORIGINS = [
-    'https://www.developertiz.com',
+	# 'http://developertiz.com',
+    # 'http://www.developertiz.com',
+    # 'https://developertiz.com',
+    'https://*.developertiz.com',
 ]
+CSRF_ALLOWED_ORIGINS = CSRF_TRUSTED_ORIGINS
+CSRF_COOKIE_SAMESITE = 'None'
 
-print("*** TEST ***")
-print(CSRF_TRUSTED_ORIGINS[0])
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+
+CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
 
 # Application definition
 

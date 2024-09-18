@@ -21,6 +21,8 @@ services:
     restart: always
     env_file:
       - .env
+    environment:
+      - DOLLAR=$
     depends_on:
       - django_gunicorn
     volumes:
