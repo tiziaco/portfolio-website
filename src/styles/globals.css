@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.main {
+	width: 100vw;
+	min-height: 100vh;
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	pointer-events: none;
+	z-index: -10;
+}
+
+.app {
+	@apply relative z-10 flex flex-col justify-center items-center overflow-hidden mx-auto sm:px-10 px-5;
+}
+
+@layer utilities {
+	.heading {
+	  @apply font-bold text-4xl md:text-5xl text-center;
+	}
+  }
+
+/* Nav Component */
+.logo_text {
+	@apply max-sm:hidden font-semibold text-lg text-black tracking-wide;
+}
+
+.dropdown {
+	@apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white dark:bg-[#13162D] min-w-[210px] flex flex-col gap-2 justify-end items-end;
+}
+
+.dropdown_link {
+	@apply text-sm text-gray-900 dark:text-white hover:text-purple-600 font-medium;
+}
+
+/* Form Component */
+.glassmorphism {
+	@apply rounded-xl bg-[#13162D]/80 shadow-[inset_10px_-50px_94px_0_rgb(19,22,45,0.2)] backdrop-blur p-5;
+}
+
+.form_container {
+	@apply mt-10 w-full max-w-xl flex flex-col gap-7
+}
+
+.form_textarea {
+	@apply w-full flex rounded-lg h-[200px] mt-2 p-3 text-sm dark:text-white text-gray-900 outline-0 dark:bg-[#13162D];
+}
+
+.form_input {
+	@apply w-full flex rounded-lg mt-2 p-3 text-sm dark:text-white text-gray-900 outline-0 dark:bg-[#13162D];
+}
