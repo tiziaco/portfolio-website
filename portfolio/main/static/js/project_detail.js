@@ -1,1 +1,0 @@
-// js functions for project detail page
