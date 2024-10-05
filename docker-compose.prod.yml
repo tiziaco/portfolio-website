@@ -5,17 +5,52 @@ services:
       context: ./
       dockerfile: prod.Dockerfile
     env_file:
-    - .env.local
+    - .env
     restart: always
     ports:
       - 3000:3000
     networks:
       - portfolio_network
 
-  # Add more containers below (nginx, postgres, etc.)
+  nginx:
+    build:
+      context: ./docker/nginx
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - DOLLAR=$
+    depends_on:
+      - next-app
+    volumes:
+      - certbot-web:/vol/www
+      - proxy-dhparams:/vol/proxy
+      - certbot-certs:/etc/letsencrypt
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - portfolio_network
 
-# Define a network, which allows containers to communicate
-# with each other, by using their container name as a hostname
+  certbot:
+    build:
+      context: ./docker/certbot
+    command: echo "Skipping..."
+    env_file:
+      - .env
+    volumes:
+      - certbot-web:/vol/www
+      - certbot-certs:/etc/letsencrypt/
+    depends_on:
+      - nginx
+    networks:
+      - portfolio_network
+  
+volumes:
+  certbot-web:
+  proxy-dhparams:
+  certbot-certs:
+
 networks:
   portfolio_network:
     driver: bridge

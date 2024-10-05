@@ -1,5 +1,5 @@
-upstream django {
-	server django_gunicorn:8000;
+upstream next_app {
+	server next-app:3000;
 }
 
 server {
@@ -32,12 +32,16 @@ server {
 
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 
-    location /static/ {
-        alias /static/;
+    # Serve static files from the .next folder
+    location /_next/static/ {
+        alias /app/.next/static/;  # Path to the .next folder in your container
+        expires 1y;
+        add_header Cache-Control "public, max-age=31536000, immutable";
+        access_log off;
     }
 
     location / {
-        proxy_pass http://django;
+        proxy_pass http://next_app;
         proxy_redirect off;
         proxy_set_header X-Forwarded-Proto ${DOLLAR}scheme;
         proxy_set_header Host ${DOLLAR}host;
