@@ -6,10 +6,13 @@ const Projects = () => {
   return (
 	<section id='projects'>
 		<div className="py-20">
+			{/* Section title */}
 			<h1 className="heading">
 				Here some of my {' '}
-				<span className="text-purple-300">recent projects</span>
+				<span className="text-green-500">recent projects</span>
 			</h1>
+
+			{/* Project cards */}
 			<div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
 				{projects.map((project) => (
 					<div key={project.id}

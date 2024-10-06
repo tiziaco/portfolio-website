@@ -26,7 +26,7 @@ export const Footer = () => {
 
 				{/* Copyright Text */}
 				<div className="text-center md:text-right dark:text-white">
-					<p>Copyright&copy;2024. Crafted with care.</p>
+					<p>&copy;2024. Crafted with care.</p>
 				</div>
 
 				{/* Social Icons */}

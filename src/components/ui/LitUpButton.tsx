@@ -2,7 +2,7 @@
 const LitUpButton = ({isPending} : 
 	{isPending:boolean}) => {
   return (
-	<div className="flex justify-end my-10">
+	<div className="flex justify-end">
 		<button
 			type="submit"
 			className="p-[3px] relative">

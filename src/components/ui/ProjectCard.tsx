@@ -1,6 +1,9 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
+import { TbWorld } from "react-icons/tb";
+import { IoLogoGithub } from "react-icons/io";
+
 export function ProjectCard( {title, description, image, techStack}: 
 	{
 		title: string,
@@ -21,11 +24,18 @@ export function ProjectCard( {title, description, image, techStack}:
 		</CardImgContainer>
 			<div className="flex flex-col items-center flex-grow mt-7 px-4">
 				<CardTitle>{title}</CardTitle>
+				<PillBadges items={techStack} />
 				<CardDescription>{description}</CardDescription>
 			</div>
-			<div className="mt-auto w-full px-4">
-				<PillBadges items={techStack} />
-		</div>
+
+			<div className="flex w-full justify-end px-4">
+				<a href="#" className="hover:opacity-75 p-2 flex items-center justify-center">
+					<IoLogoGithub className="h-10 w-10"/>
+				</a>
+				<a href="#" className="hover:opacity-75 p-2 flex items-center justify-center">
+					<TbWorld className="h-10 w-10"/>
+				</a>
+			</div>
 	</Card>
 	);
 }
@@ -61,7 +71,7 @@ export const CardTitle = ({
 	return (
 	<h3
 		className={cn(
-		"text-lg font-semibold text-gray-800 dark:text-white py-2",
+		"text-xl font-bold text-gray-800 dark:text-white py-2",
 		className
 		)}
 	>
@@ -80,7 +90,7 @@ export const CardDescription = ({
 	return (
 	<p
 		className={cn(
-		"text-sm font-normal text-neutral-600 dark:text-neutral-400 max-w-sm",
+		"text-sm font-normal pt-4 text-neutral-600 dark:text-neutral-400 max-w-sm",
 		className
 		)}
 	>
@@ -111,7 +121,7 @@ export const CardImgContainer = ({
 
 const PillBadges = ({ items }: {items:string[]}) => {
 	return (
-	<div className="flex flex-wrap gap-2 pt-5 justify-start w-full">
+	<div className="flex flex-wrap gap-2 py-2 justify-start w-full">
 		{items.map((item, index) => (
 		<span
 			key={index}

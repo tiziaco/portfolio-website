@@ -84,7 +84,7 @@ export const BentoGridItem = ({
 				<div
 					className={cn(
 						titleClassName,
-						"group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10"
+						"group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10 justify-center items-center"
 					)}
 				>
 					{/* Conditional rendering based on the ID */}
@@ -113,9 +113,11 @@ export const BentoGridItem = ({
 							<div className={`font-sans text-lg lg:text-3xl font-bold z-10`}>
 								{title}
 							</div>
-							<div className="font-sans font-extralight max-w-48 md:text-xs lg:text-base text-sm text-[#C1C2D3] z-10">
+							{description && (
+								<div className="font-sans font-extralight max-w-48 md:text-xs lg:text-base text-sm text-[#C1C2D3] z-10">
 								{description}
-							</div>
+								</div>
+							)}
 						</>
 					)}
 				</div>
