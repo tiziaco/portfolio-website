@@ -23,6 +23,7 @@ COPY src ./src
 COPY public ./public
 COPY next.config.mjs .
 COPY tsconfig.json .
+COPY tailwind.config.ts .
 
 # Environment variables must be present at build time
 # (defined in the docker-compose.yml)
