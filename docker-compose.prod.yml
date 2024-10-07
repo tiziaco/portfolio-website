@@ -7,6 +7,8 @@ services:
     env_file:
     - .env
     restart: always
+    volumes:
+      - static-files:/app/.next/static
     ports:
       - 3000:3000
     networks:
@@ -23,6 +25,7 @@ services:
     depends_on:
       - next-app
     volumes:
+      - static-files:/app/.next/static
       - certbot-web:/vol/www
       - proxy-dhparams:/vol/proxy
       - certbot-certs:/etc/letsencrypt
@@ -47,6 +50,7 @@ services:
       - portfolio_network
   
 volumes:
+  static-files:
   certbot-web:
   proxy-dhparams:
   certbot-certs:
