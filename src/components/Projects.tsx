@@ -1,4 +1,4 @@
-import { projects } from "@/data"
+import { projects } from "@/data/projects"
 import { ProjectCard } from "./ui/ProjectCard"
 
 
@@ -24,6 +24,8 @@ const Projects = () => {
 							description={project.des}
 							image={project.img}
 							techStack={project.techStack}
+							webLink={project.webLink}
+							gitLink={project.gitLink}
 						/>
 					</div>
 					))}

@@ -5,7 +5,7 @@ import Image from "next/image";
 
 import { useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import logo from "@public/logo.svg";
+import logo from "@public/my_logo.svg";
 import { IoMenu } from "react-icons/io5";
 
 
@@ -29,15 +29,15 @@ const NavBar = () => {
 	return (
 		<motion.nav
 			style={{ backgroundColor, boxShadow, backdropFilter: backdropBlur }}
-			className="fixed top-0 left-0 w-full z-50 flex justify-between items-center mb-16 py-4 px-20 transition-all duration-300 backdrop-blur-md"
+			className="fixed top-0 left-0 w-full z-50 flex justify-between items-center mb-16 py-4 px-10 md:px-20 transition-all duration-300 backdrop-blur-md"
 		>
 			<Link href="/" className="flex gap-2 items-center h-8">
 				<Image
 					src={logo}
 					alt="logo"
-					width={100}
-					height={40}
-					className="object-contain"
+					width={325}
+					height={60}
+					className="object-contain text-red-500"
 				/>
 			</Link>
 
@@ -45,7 +45,7 @@ const NavBar = () => {
 			<div className="sm:flex hidden">
 				<div className="flex gap-5 md:gap-10">
 					{navItems.map((item) => (
-						<Link key={item.name} href={item.link} className="text-lg font-medium hover:text-purple-600">
+						<Link key={item.name} href={item.link} className="text-lg font-medium hover:text-green-500">
 							{item.name.toLocaleUpperCase()}
 						</Link>
 					))}

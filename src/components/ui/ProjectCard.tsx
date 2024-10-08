@@ -4,12 +4,14 @@ import Image from "next/image";
 import { TbWorld } from "react-icons/tb";
 import { IoLogoGithub } from "react-icons/io";
 
-export function ProjectCard( {title, description, image, techStack}: 
+export function ProjectCard( {title, description, image, techStack, webLink, gitLink}: 
 	{
 		title: string,
 		description: string,
 		image: string,
-		techStack: string[]
+		techStack: string[],
+		webLink: string,
+		gitLink: string
 	})
 	{
 	return (
@@ -29,12 +31,16 @@ export function ProjectCard( {title, description, image, techStack}:
 			</div>
 
 			<div className="flex w-full justify-end px-4">
-				<a href="#" className="hover:opacity-75 p-2 flex items-center justify-center">
-					<IoLogoGithub className="h-10 w-10"/>
-				</a>
-				<a href="#" className="hover:opacity-75 p-2 flex items-center justify-center">
-					<TbWorld className="h-10 w-10"/>
-				</a>
+				{gitLink && (
+					<a href={gitLink} target="_blank" className="hover:opacity-75 p-2 flex items-center justify-center">
+						<IoLogoGithub className="h-10 w-10" />
+					</a>
+				)}
+				{webLink && (
+					<a href={webLink} target="_blank" className="hover:opacity-75 p-2 flex items-center justify-center">
+						<TbWorld className="h-10 w-10" />
+					</a>
+				)}
 			</div>
 	</Card>
 	);
