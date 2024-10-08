@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.main {
+.background {
 	width: 100vw;
 	min-height: 100vh;
 	position: fixed;
@@ -16,15 +16,21 @@
 	@apply relative z-10 flex flex-col justify-center items-center overflow-hidden mx-auto sm:px-10 px-5;
 }
 
+@layer base {
+	* {
+		@apply !scroll-smooth;
+	}
+}
+
 @layer utilities {
 	.heading {
 	  @apply font-bold text-4xl md:text-5xl text-center;
 	}
-  }
+}
 
 /* Nav Component */
 .logo_text {
-	@apply max-sm:hidden font-semibold text-lg text-black tracking-wide;
+	@apply max-sm:hidden font-semibold text-lg text-gray-900 dark:text-white tracking-wide;
 }
 
 .dropdown {
@@ -32,7 +38,7 @@
 }
 
 .dropdown_link {
-	@apply text-sm text-gray-900 dark:text-white hover:text-purple-600 font-medium;
+	@apply text-lg text-gray-900 dark:text-white hover:text-purple-600 font-medium;
 }
 
 /* Form Component */
