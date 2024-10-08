@@ -1,12 +1,15 @@
 export const techStack = ["Python", "C/C++", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind", "SQL", "NoSQL", "Docker"];
 
+export const gitLink = "https://github.com/tiziaco"
+export const linkedinLink = "https://www.linkedin.com/in/tiziaco/"
+
 export const gridItems = [
 	{
 		id: 1,
 		title: "",
 		description: "",
 		className: "lg:col-span-2 md:col-span-2 md:row-span-5",
-		imgClassName: "justify-center items-center rounded-full border-4 border-white shadow-lg",
+		imgClassName: "justify-center items-center rounded-full border-4 border-white shadow-lg w-full h-auto",
 		titleClassName: "",
 		img: "avatar_pic.png",
 		spareImg: "",
