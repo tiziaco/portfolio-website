@@ -24,6 +24,7 @@ COPY public ./public
 COPY next.config.mjs .
 COPY tsconfig.json .
 COPY tailwind.config.ts .
+COPY postcss.config.ts .
 
 # Environment variables must be present at build time
 # (defined in the docker-compose.yml)
@@ -49,13 +50,12 @@ RUN adduser --system --uid 1001 nextjs
 USER nextjs
 
 COPY --from=builder /app/public ./public
-
+COPY --from=builder /app/tailwind.config.ts ./
+COPY --from=builder /app/postcss.config.ts ./
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-USER nextjs
 
 # Environment variables must be redefined at run time
 # (defined in the docker-compose.yml)
