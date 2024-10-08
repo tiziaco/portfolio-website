@@ -28,7 +28,7 @@ export default function RootLayout({children,}: Readonly<{
 					enableSystem
 					disableTransitionOnChange
 				>
-					<div className="main">
+					<div className="background">
 						<Background />
 					</div>
 					<main className='app'>
