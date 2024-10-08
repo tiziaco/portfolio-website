@@ -1,38 +1,38 @@
 export const projects = [
 	{
 		id: 1,
-		title: "3D Solar System Planets to Explore",
-		des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
+		title: "Minishell",
+		des: "A simplified Unix shell that replicates core features like executing commands, handling pipes, managing redirections, and returning accurate error codes. It offers hands-on experience with system calls, process management, error handling, and C programming",
 		img: "/p1.svg",
-		techStack: ["Next.js", "three.js"],
-		link: "/ui.earth.com",
-		gitLink: "www.github.com"
+		techStack: ["C", "UNIX"],
+		webLink: "",
+		gitLink: "https://github.com/tiziaco/minishell"
 	},
 	{
 		id: 2,
-		title: "Yoom - Video Conferencing App",
-		des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
+		title: "MiniRT",
+		des: "This project introduces the captivating world of ray tracing, a key technique in computer graphics that simulates light interactions to create realistic images. By generating detailed reflections, shadows, and textures, it brings virtual scenes to life with impressive precision.",
 		img: "/p2.svg",
-		techStack: ["Next.js", "Tailwind", "Typescript", "Stream"],
-		link: "/ui.yoom.com",
+		techStack: ["C", "UNIX", "X11"],
+		webLink: "",
 		gitLink: "www.github.com"
 	},
 	{
 		id: 3,
-		title: "AI Image SaaS - Canva Application",
-		des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
+		title: "iTrader",
+		des: "Powerful algorithmic trading framework designed for both backtesting and live execution of trading strategies. Built on an event-driven architecture, it provides a flexible and modular environment for developing and deploying automated trading strategies.",
 		img: "/p3.svg",
-		techStack: ["Next.js","Three.js", "Tailwind", "Typescript"],
-		link: "/ui.aiimg.com",
-		gitLink: "www.github.com"
+		techStack: ["Python","Pandas", "Poetry", "SQL"],
+		webLink: "",
+		gitLink: "https://github.com/tiziaco/intelli-trader"
 	},
 	{
 		id: 4,
-		title: "Animated Apple Iphone 3D Website",
-		des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
+		title: "Chat PDF",
+		des: "Full-stack web application that mimics the conversational experience of ChatGPT. It leverages large language models (LLM) for core functionality and integrates a Retrieval-Augmented Generation (RAG) component to access and analyze PDF files.",
 		img: "/p4.svg",
-		techStack: ["Next.js","Three.js", "Tailwind", "Typescript"],
-		link: "/ui.apple.com",
-		gitLink: "www.github.com"
+		techStack: ["Python","LlamaIndex", "Ollama", "Streamlit", "PostgreSQL"],
+		webLink: "",
+		gitLink: "https://github.com/tiziaco/llm-rag-app"
 	},
 ];
