@@ -1,7 +1,9 @@
+"use client"
+
 import Link from "next/link";
 import Image from "next/image";
 
-import logo from "@public/logo.svg"
+import Logo from "@public/my_logo.svg";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { TbBrandGithubFilled } from "react-icons/tb";
 import { gitLink, linkedinLink } from "@/data/about_content";
@@ -19,13 +21,7 @@ export const Footer = () => {
 				{/* Logo */}
 				<div className="relative">
 					<Link href='/' className='flex gap-2 flex-center relative w-full h-8'>
-						<Image
-							src={logo}
-							alt='logo'
-							width={100}
-							height={40}
-							className='object-contain'
-						/>
+						<Logo className="w-64 h-auto text-white" />
 					</Link>
 				</div>
 

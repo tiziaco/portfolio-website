@@ -1,11 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 
 import { useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import logo from "@public/my_logo.svg";
+import Logo from "@public/my_logo.svg";
 import { IoMenu } from "react-icons/io5";
 
 
@@ -32,13 +31,7 @@ const NavBar = () => {
 			className="fixed top-0 left-0 w-full z-50 flex justify-between items-center mb-16 py-4 px-10 md:px-20 transition-all duration-300 backdrop-blur-md"
 		>
 			<Link href="/" className="flex gap-2 items-center h-8">
-				<Image
-					src={logo}
-					alt="logo"
-					width={325}
-					height={60}
-					className="object-contain text-red-500"
-				/>
+				<Logo className="w-64 h-auto text-white" />
 			</Link>
 
 			{/* Desktop Navigation */}
