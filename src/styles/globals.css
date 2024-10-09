@@ -43,11 +43,11 @@
 
 /* Form Component */
 .glassmorphism {
-	@apply rounded-xl bg-[#13162D]/80 shadow-[inset_10px_-50px_94px_0_rgb(19,22,45,0.2)] backdrop-blur p-5;
+	@apply rounded-xl bg-[#13162D]/80 shadow-[inset_10px_-50px_94px_0_rgb(19,22,45,0.2)] backdrop-blur;
 }
 
 .form_container {
-	@apply mt-10 w-full max-w-xl flex flex-col gap-7
+	@apply mt-10 w-full max-w-xl flex flex-col gap-7 p-5
 }
 
 .form_textarea {

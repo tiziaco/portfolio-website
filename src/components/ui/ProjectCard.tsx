@@ -15,7 +15,7 @@ export function ProjectCard( {title, description, image, techStack, webLink, git
 	})
 	{
 	return (
-	<Card>
+	<Card className="glassmorphism">
 		<CardImgContainer>
 			<Image
 				fill={true}

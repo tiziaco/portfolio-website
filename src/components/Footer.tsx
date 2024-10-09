@@ -20,7 +20,7 @@ export const Footer = () => {
 
 				{/* Logo */}
 				<div className="relative">
-					<Link href='/' className='flex gap-2 flex-center relative w-full h-8'>
+					<Link href='/' aria-label="link to hero section" className='flex gap-2 flex-center relative w-full h-8'>
 						<Logo className="w-64 h-auto text-white" />
 					</Link>
 				</div>
@@ -32,10 +32,10 @@ export const Footer = () => {
 
 				{/* Social Icons */}
 				<div className="flex space-x-4 mt-6 md:mt-0">
-					<a href={linkedinLink} target="_blank" className="hover:opacity-75 border border-stone-50 p-2 rounded-full flex items-center justify-center w-10 h-10">
+					<a href={linkedinLink} target="_blank" aria-label="Linkedin profile link" className="hover:opacity-75 border border-stone-50 p-2 rounded-full flex items-center justify-center w-10 h-10">
 						<FaLinkedinIn className="h-6" />
 					</a>
-					<a href={gitLink} target="_blank" className="hover:opacity-75 border border-stone-50 p-2 rounded-full flex items-center justify-center w-10 h-10">
+					<a href={gitLink} target="_blank" aria-label="GitHub profile link" className="hover:opacity-75 border border-stone-50 p-2 rounded-full flex items-center justify-center w-10 h-10">
 						<TbBrandGithubFilled className="h-6" />
 					</a>
 				</div>

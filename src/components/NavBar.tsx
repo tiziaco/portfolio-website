@@ -30,7 +30,7 @@ const NavBar = () => {
 			style={{ backgroundColor, boxShadow, backdropFilter: backdropBlur }}
 			className="fixed top-0 left-0 w-full z-50 flex justify-between items-center mb-16 py-4 px-10 md:px-20 transition-all duration-300 backdrop-blur-md"
 		>
-			<Link href="/" className="flex gap-2 items-center h-8">
+			<Link href="/" aria-label="link to hero section" className="flex gap-2 items-center h-8">
 				<Logo className="w-64 h-auto text-white" />
 			</Link>
 

@@ -15,7 +15,7 @@ const MagicButton = ({
   otherClasses?: string;
 }) => {
   return (
-	<a href={href}>
+	<a href={href} aria-label="link to about section">
 		<button
 		className="relative inline-flex h-12 w-full md:w-60 md:mt-10 overflow-hidden rounded-lg p-[1px] focus:outline-none"
 		onClick={handleClick}
