@@ -11,7 +11,7 @@ export const gridItems = [
 		className: "lg:col-span-2 md:col-span-2 md:row-span-5",
 		imgClassName: "justify-center items-center rounded-full border-4 border-white shadow-lg w-full h-auto",
 		titleClassName: "",
-		img: "avatar_pic.png",
+		img: "/avatar_pic.png",
 		spareImg: "",
 	},
 	{
@@ -31,7 +31,7 @@ export const gridItems = [
 		className: "lg:col-span-4 md:col-span-4 md:row-span-10 lg:min-h-[60vh]",
 		imgClassName: "justify-center items-center",
 		titleClassName: "justify-center",
-		img: "/b1.svg",
+		img: "",
 		spareImg: "",
 	},
 	{
@@ -51,8 +51,8 @@ export const gridItems = [
 		className: "lg:col-span-6 md:col-span-3 md:row-span-5",
 		imgClassName: "",
 		titleClassName: "justify-start",
-		img: "/grid.svg",
-		spareImg: "/b4.svg",
+		img: "",
+		spareImg: "",
 	},
 	{
 		id: 6,
