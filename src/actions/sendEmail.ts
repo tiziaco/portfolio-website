@@ -26,9 +26,9 @@ async function verifyRecaptcha(token: string) {
 		});
   
 		const data = await response.json();
-		console.log('reCAPTCHA verification response:', data);
+		// console.log('reCAPTCHA verification response:', data);
   
-		return data.success && data.score > 0.5;
+		return data.success && data.score > 0.7;
 	} catch (error) {
 		console.error('Error verifying reCAPTCHA:', error);
 		false;
