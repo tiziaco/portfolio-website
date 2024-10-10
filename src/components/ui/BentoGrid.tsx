@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import Image from 'next/image';
 import PillBadges from "./PillBadges";
 
 import { techStack } from "@/data/about_content";
@@ -45,14 +46,14 @@ export const BentoGridItem = ({
 	return (
 		<div
 			className={cn(
-				"relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4",
+				"relative overflow-hidden glassmorphism rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4",
 				className
 			)}
-			style={{
-				background: "rgb(4,7,29)",
-				backgroundColor:
-					"linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-			}}
+			// style={{
+			// 	background: "rgb(4,7,29)",
+			// 	backgroundColor:
+			// 		"linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+			// }}
 		>
 			{/* Add image for Item 6 (bottom-right) */}
 			<div className={`${id === 6 && "flex justify-center"} h-full`}>
