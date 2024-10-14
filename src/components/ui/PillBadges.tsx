@@ -5,7 +5,7 @@ const PillBadges = ({ items }: {items:string[]}) => {
 		{items.map((item, index) => (
 		<span
 			key={index}
-			className="bg-purple-400 dark:text-white text-black text-sm font-semibold px-2 py-1 rounded-full"
+			className="bg-purple-400 text-black text-sm font-semibold px-2 py-1 rounded-full"
 		>
 			{item}
 		</span>
