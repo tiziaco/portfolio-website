@@ -34,12 +34,12 @@ export function ProjectCard( {title, description, image, techStack, webLink, git
 
 			<div className="flex w-full justify-end px-4">
 				{gitLink && (
-					<a href={gitLink} target="_blank" className="hover:opacity-75 p-2 flex items-center justify-center">
+					<a href={gitLink} target="_blank" aria-label={`Live website link for ${title} project`} className="hover:opacity-75 p-2 flex items-center justify-center">
 						<IoLogoGithub className="h-10 w-10" />
 					</a>
 				)}
 				{webLink && (
-					<a href={webLink} target="_blank" className="hover:opacity-75 p-2 flex items-center justify-center">
+					<a href={webLink} target="_blank" aria-label={`GitHub link for ${title} project`} className="hover:opacity-75 p-2 flex items-center justify-center">
 						<TbWorld className="h-10 w-10" />
 					</a>
 				)}
@@ -126,20 +126,3 @@ export const CardImgContainer = ({
 	</div>
 	);
 };
-
-// const PillBadges = ({ items }: {items:string[]}) => {
-// 	return (
-// 	<div className="flex flex-wrap gap-2 py-2 justify-start w-full">
-// 		{items.map((item, index) => (
-// 		<span
-// 			key={index}
-// 			className="bg-purple-400 dark:text-white text-black text-sm font-semibold px-2 py-1 rounded-full"
-// 		>
-// 			{item}
-// 		</span>
-// 		))}
-// 	</div>
-// 	);
-// };
-
-// export default PillBadges;
