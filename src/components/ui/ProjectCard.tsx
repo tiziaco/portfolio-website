@@ -1,6 +1,8 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
+import PillBadges from "./PillBadges";
+
 import { TbWorld } from "react-icons/tb";
 import { IoLogoGithub } from "react-icons/io";
 
@@ -125,19 +127,19 @@ export const CardImgContainer = ({
 	);
 };
 
-const PillBadges = ({ items }: {items:string[]}) => {
-	return (
-	<div className="flex flex-wrap gap-2 py-2 justify-start w-full">
-		{items.map((item, index) => (
-		<span
-			key={index}
-			className="bg-purple-400 dark:text-white text-black text-sm font-semibold px-2 py-1 rounded-full"
-		>
-			{item}
-		</span>
-		))}
-	</div>
-	);
-};
+// const PillBadges = ({ items }: {items:string[]}) => {
+// 	return (
+// 	<div className="flex flex-wrap gap-2 py-2 justify-start w-full">
+// 		{items.map((item, index) => (
+// 		<span
+// 			key={index}
+// 			className="bg-purple-400 dark:text-white text-black text-sm font-semibold px-2 py-1 rounded-full"
+// 		>
+// 			{item}
+// 		</span>
+// 		))}
+// 	</div>
+// 	);
+// };
 
-export default PillBadges;
+// export default PillBadges;
