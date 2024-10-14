@@ -16,6 +16,10 @@
 	@apply relative z-10 flex flex-col justify-center items-center overflow-hidden mx-auto sm:px-10 px-5;
 }
 
+.grecaptcha-badge { 
+    visibility: hidden !important;
+}
+
 @layer base {
 	* {
 		@apply !scroll-smooth;
