@@ -7,6 +7,7 @@ import Background from "@/components/Background";
 import { ThemeProvider } from "@/components/ThemeProvider"
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 
 const inter = Inter({subsets: ["latin"]})
@@ -24,6 +25,7 @@ export default function RootLayout({children,}: Readonly<{
 }>) {
 	return (
 		<html lang="en">
+			<GoogleAnalytics />
 			<body className={`${inter.className} antialiased`}>
 				<ThemeProvider
 					attribute="class"
