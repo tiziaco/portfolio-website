@@ -60,7 +60,7 @@ export const Card = ({
 	return (
 	<div
 		className={cn(
-		"lg:min-h-[32.5rem] h-[25rem] flex flex-col pb-6 rounded-xl items-center justify-center sm:w-96 w-[80vw] bg-[#13162D] group",
+		"lg:min-h-[32.5rem] h-[30rem] flex flex-col pb-6 rounded-xl items-center justify-center sm:w-96 w-[80vw] bg-[#13162D] group",
 		className
 		)}
 	>
@@ -98,7 +98,7 @@ export const CardDescription = ({
 	return (
 	<p
 		className={cn(
-		"text-sm font-normal pt-4 text-neutral-600 dark:text-neutral-400 max-w-sm",
+		"text-sm font-normal pt-4 text-neutral-800 dark:text-neutral-200 max-w-sm",
 		className
 		)}
 	>

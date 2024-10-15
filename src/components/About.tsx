@@ -6,10 +6,10 @@ const About = () => {
 	return (
 		<section id="about">
 			{/* Section title */}
-			<h1 className="heading">
+			<h2 className="heading">
 				Something {' '}
 				<span className="text-green-500">about me</span>
-			</h1>
+			</h2>
 
 			{/* Bento grid */}
 			<BentoGrid className="py-20 px-10">

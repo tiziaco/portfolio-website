@@ -57,6 +57,7 @@ function ContactFormContent({ setIsEmailSent } : SentEmailState) {
 						value={fullname}
 						onChange={(e) => setFullname(e.target.value)}
 						required
+						aria-label="Full name"
 						className='form_input'
 					/>
 				</div>
@@ -67,6 +68,7 @@ function ContactFormContent({ setIsEmailSent } : SentEmailState) {
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required
+						aria-label="Email"
 						className='form_input'
 					/>
 				</div>
@@ -76,6 +78,7 @@ function ContactFormContent({ setIsEmailSent } : SentEmailState) {
 						value={message}
 						onChange={(e) => setMessage(e.target.value)}
 						required
+						aria-label="Message"
 						className='form_textarea'
 					/>
 				</div>

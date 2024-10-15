@@ -64,6 +64,7 @@ const NavBar = () => {
 				<button
 					onClick={() => setToggleDropdown(!toggleDropdown)}
 					className="flex items-center justify-center"
+					aria-label="Open dropdown navigation bar"
 				>
 					<IoMenu className="h-10 w-10"/>
 				</button> 
