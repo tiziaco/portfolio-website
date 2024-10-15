@@ -16,7 +16,7 @@ const Hero = () => {
 
 				<TextGenerateEffect
 					words="Engineering innovative digital experiences with a foundation in real-world problem-solving"
-					className="text-center text-[40px] sm:text-2xl md:text-5xl lg:text-6xl bg-opacity-50"
+					className="text-center text-[40px] sm:text-2xl md:text-5xl lg:text-6xl"
 				/>
 				
 				<MagicButton

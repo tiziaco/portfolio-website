@@ -8,7 +8,7 @@ const About = () => {
 			{/* Section title */}
 			<h2 className="heading">
 				Something {' '}
-				<span className="text-green-500">about me</span>
+				<span className="text-green-500 drop-shadow-3xl">about me</span>
 			</h2>
 
 			{/* Bento grid */}

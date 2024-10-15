@@ -9,7 +9,7 @@ const Projects = () => {
 			{/* Section title */}
 			<h2 className="heading">
 				Here some of my {' '}
-				<span className="text-green-500">recent projects</span>
+				<span className="text-green-500 drop-shadow-3xl">recent projects</span>
 			</h2>
 
 			{/* Project cards */}
