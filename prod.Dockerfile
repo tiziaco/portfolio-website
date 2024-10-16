@@ -27,8 +27,8 @@ COPY tailwind.config.ts .
 COPY postcss.config.cjs .
 
 # Environment variables must be present at build time
-# (defined in the docker-compose.yml)
-# Next.js collects completely anonymous telemetry data about general usage
+ARG NEXT_PUBLIC_MEASUREMENT_ID
+ENV NEXT_PUBLIC_MEASUREMENT_ID=$NEXT_PUBLIC_MEASUREMENT_ID
 ENV NEXT_TELEMETRY_DISABLED 1
 
 # Build Next.js based on the preferred package manager
