@@ -21,6 +21,7 @@ export function ProjectCard( {title, description, image, techStack, webLink, git
 		<CardImgContainer>
 			<Image
 				fill={true}
+				sizes="(min-width: 640px) 384px, 80vw"
 				alt="image"
 				src={image}
 				className="object-cover z-10 absolute top-0"
