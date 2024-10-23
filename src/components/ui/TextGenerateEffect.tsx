@@ -15,7 +15,7 @@ export const TextGenerateEffect = ({
 	const wordsArray = words.split(" ");
 	useEffect(() => {
 		animate(
-			"span",
+			"h1",
 			{
 				opacity: 1,
 			},
@@ -31,7 +31,7 @@ export const TextGenerateEffect = ({
 			<motion.div ref={scope}>
 				{wordsArray.map((word, idx) => {
 					return (
-						<motion.span
+						<motion.h1
 							key={word + idx}
 							// change here if idx is greater than 3, change the text color to #CBACF9
 							className={`${
@@ -41,7 +41,7 @@ export const TextGenerateEffect = ({
 							  } opacity-0 drop-shadow-2xl`}
 						>
 							{word}{" "}
-						</motion.span>
+						</motion.h1>
 					);
 				})}
 			</motion.div>
