@@ -65,25 +65,28 @@ export const BentoGridItem: React.FC<BentoGridItemProps> = ({
 		);
 
 	const renderTitleAndDescription = () => (
-		<div className={cn(titleClassName,
-		'z-10 flex flex-col p-5 lg:p-10 justify-center items-center',
-		'absolute inset-0')}>
-			<div className="font-sans text-lg lg:text-3xl font-bold">{title}</div>
+		<div className="z-10 flex flex-col p-5 md:p-10 justify-center items-center absolute inset-0">
+			{title &&(
+				<div className={cn(titleClassName,
+					"font-sans text-lg lg:text-3xl font-bold")}>
+					{title}
+				</div>
+			)}
 			{description && (
-			<div className="font-sans font-extralight max-w-48 md:text-xs lg:text-base text-sm text-[#C1C2D3]">
-				{description}
-			</div>
+				<div className="font-sans font-light text-base text-[#C1C2D3]">
+					{description}
+				</div>
 			)}
 		</div>
 	);
 
 	const renderLayoutForID4 = () => (
-		<div className="flex justify-between items-start p-5 lg:p-10 z-10">
-			<div className="flex-1">
+		<div className="flex flex-col md:flex-row justify-between items-start p-5 lg:p-10 z-10">
+			<div className="flex-1 md:pr-4">
 				<div className="font-sans text-lg lg:text-3xl max-w-96 font-bold">
 					{title}
 				</div>
-				<div className="font-sans font-light max-w-48 md:text-xs lg:text-base text-sm text-[#C1C2D3]">
+				<div className="font-sans font-light text-base text-[#C1C2D3]">
 					{description}
 				</div>
 			</div>
