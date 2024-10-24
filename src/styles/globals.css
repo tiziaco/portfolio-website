@@ -20,6 +20,11 @@
     visibility: hidden !important;
 }
 
+h1.inline {
+	display: inline;
+	margin: 0;
+}
+
 @layer base {
 	* {
 		@apply !scroll-smooth;
