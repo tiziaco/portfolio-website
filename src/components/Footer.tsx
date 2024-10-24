@@ -6,7 +6,8 @@ import Image from "next/image";
 import Logo from "@public/my_logo.svg";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { TbBrandGithubFilled } from "react-icons/tb";
-import { gitLink, linkedinLink } from "@/data/about_content";
+import { FaThreads } from "react-icons/fa6";
+import { gitLink, linkedinLink, threadsLink } from "@/data/about_content";
 
 
 export const Footer = () => {
@@ -14,8 +15,8 @@ export const Footer = () => {
 	let currentYear = date.getFullYear();
 
 	return (
-	<footer className="bg-[#13162D] py-6">
-		<div className="mx-auto md:px-20">
+	<footer className="bg-[#13162D]">
+		<div className="mx-auto md:px-10 lg:px-20 py-6">
 			<div className="flex flex-col w-full md:flex-row items-center justify-between">
 
 				{/* Logo */}
@@ -27,7 +28,7 @@ export const Footer = () => {
 
 				{/* Copyright Text */}
 				<div className="text-center md:text-right dark:text-white">
-					<p>&copy;{currentYear}. Crafted with care.</p>
+					<p>&copy;{currentYear}. Crafted with care</p>
 				</div>
 
 				{/* Social Icons */}
@@ -37,6 +38,9 @@ export const Footer = () => {
 					</a>
 					<a href={gitLink} target="_blank" aria-label="GitHub profile link" className="hover:opacity-75 border border-stone-50 p-2 rounded-full flex items-center justify-center w-10 h-10">
 						<TbBrandGithubFilled className="h-6" />
+					</a>
+					<a href={threadsLink} target="_blank" aria-label="Threads profile link" className="hover:opacity-75 border border-stone-50 p-2 rounded-full flex items-center justify-center w-10 h-10">
+						<FaThreads className="h-6" />
 					</a>
 				</div>
 			</div>

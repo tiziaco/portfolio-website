@@ -2,6 +2,7 @@ export const techStack = ["Python", "C/C++", "JavaScript", "TypeScript", "React"
 
 export const gitLink = "https://github.com/tiziaco"
 export const linkedinLink = "https://www.linkedin.com/in/tiziaco/"
+export const threadsLink = "https://www.threads.net/@tiziano.iaco"
 
 export const gridItems = [
 	{
