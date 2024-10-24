@@ -1,3 +1,5 @@
+server_tokens off;
+
 upstream next_app {
 	server next-app:3000;
 }
