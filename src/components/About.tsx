@@ -12,7 +12,7 @@ const About = () => {
 			</h2>
 
 			{/* Bento grid */}
-			<BentoGrid className="py-20 px-10">
+			<BentoGrid className="py-20 px-0 md:px-10">
 				{gridItems.map((item, i) => (
 					<BentoGridItem
 						id={item.id}
