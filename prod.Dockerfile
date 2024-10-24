@@ -25,6 +25,7 @@ COPY next.config.mjs .
 COPY tsconfig.json .
 COPY tailwind.config.ts .
 COPY postcss.config.cjs .
+COPY next-sitemap.config.js .
 
 # Environment variables must be present at build time
 ARG NEXT_PUBLIC_MEASUREMENT_ID
