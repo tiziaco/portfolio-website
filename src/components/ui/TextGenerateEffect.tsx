@@ -34,7 +34,7 @@ export const TextGenerateEffect = ({
 						<motion.h1
 							key={word + idx}
 							// change here if idx is greater than 3, change the text color to #CBACF9
-							className={`${
+							className={`inline ${
 								idx > 1 && idx < 4 || idx > 8
 								  ? "text-green-500 drop-shadow-3xl" // Always green for 1 < idx < 3 and idx > 8
 								  : "text-inherit" // default color
