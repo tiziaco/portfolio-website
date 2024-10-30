@@ -1,35 +1,66 @@
+'use client';
+
+import AnimatedContainer from '@/components/animated/AnimatedContainer';
+import AnimatedItem from "@/components/animated/AnimatedWrapper";
+import HighlightText from '@/components/ui/HighlightText';
+import MagicButton from '@/components/ui/MagicButton';
+import SocialLinks from '@/components/ui/SocialLinks';
+
+import { useAnimationVariants } from '@/hooks/useAnimationVariants';
 import { FaLocationArrow } from "react-icons/fa6";
 
-import MagicButton from "./ui/MagicButton";
-import { TextGenerateEffect } from "./ui/TextGenerateEffect";
+import { gitLink, linkedinLink, threadsLink, mediumLink } from "@/data/about_content";
 
-const Hero = () => {
+const Hero: React.FC = () => {
+	const { containerVariants, itemVariants, wordVariants } = useAnimationVariants();
+
 	return (
-	<div className='pb-20 pt-10'>
+		<div className="flex flex-col items-center justify-center">
+			<AnimatedContainer
+				variants={containerVariants}
+				className='relative my-20 z-10 pb-20 pt-10 max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center'
+			>
+					<AnimatedItem
+						variants={wordVariants}
+						className="text-center md:tracking-wider mb-4 text-lg md:text-lg lg:text-3xl"
+					>
+						<p>Hey there, I&apos;m Tiziano!</p>
+					</AnimatedItem>
+					
+					<AnimatedItem
+						variants={wordVariants}
+						className="md:tracking-wider mb-4 "
+					>
+						<HighlightText
+							as='h1'
+							highlightIndices={[1, 2, 3, 8]}
+							className='text-center font-bold text-3xl md:text-5xl lg:text-6xl'
+						>
+							Engineering innovative digital experiences with a foundation in real-world problem-solving
+						</HighlightText>
+					</AnimatedItem>
 
-		<div className="flex justify-center relative my-20 z-10">
-			<div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
+					<AnimatedItem variants={itemVariants}>
+						<SocialLinks
+							linkedinLink={linkedinLink}
+							gitLink={gitLink}
+							threadsLink={threadsLink}
+							mediumLink={mediumLink}
+						/>
+    				</AnimatedItem>
 
-				<p className="text-center md:tracking-wider mb-4 text-lg md:text-lg lg:text-3xl">
-					Hi! I&apos;m Tiziano.
-				</p>
-
-				<TextGenerateEffect
-					words="Engineering innovative digital experiences with a foundation in real-world problem-solving"
-					className="text-center text-3xl md:text-5xl lg:text-6xl"
-				/>
+					<AnimatedItem variants={itemVariants}>
+						<MagicButton
+							title="Discover more"
+							icon={<FaLocationArrow />}
+							position="right"
+							href="#about"
+						/>
+					</AnimatedItem>
 				
-				<MagicButton
-					title="Discover more"
-					icon={<FaLocationArrow />}
-					position="right"
-					href="#about"
-				/>
-
-			</div>
+			</AnimatedContainer>
 		</div>
-	</div>
-	)
-}
+	);
+};
 
-export default Hero
+export default Hero;

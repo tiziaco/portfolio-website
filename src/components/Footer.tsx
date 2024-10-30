@@ -7,7 +7,8 @@ import Logo from "@public/my_logo.svg";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { TbBrandGithubFilled } from "react-icons/tb";
 import { FaThreads } from "react-icons/fa6";
-import { gitLink, linkedinLink, threadsLink } from "@/data/about_content";
+import { gitLink, linkedinLink, threadsLink, mediumLink } from "@/data/about_content";
+import SocialLinks from "./ui/SocialLinks";
 
 
 export const Footer = () => {
@@ -32,7 +33,13 @@ export const Footer = () => {
 				</div>
 
 				{/* Social Icons */}
-				<div className="flex space-x-4 mt-6 md:mt-0">
+				<SocialLinks
+					linkedinLink={linkedinLink}
+					gitLink={gitLink}
+					threadsLink={threadsLink}
+					mediumLink={mediumLink}
+				/>
+				{/* <div className="flex space-x-4 mt-6 md:mt-0">
 					<a href={linkedinLink} target="_blank" aria-label="Linkedin profile link" className="hover:opacity-75 border border-stone-50 p-2 rounded-full flex items-center justify-center w-10 h-10">
 						<FaLinkedinIn className="h-6" />
 					</a>
@@ -42,7 +49,7 @@ export const Footer = () => {
 					<a href={threadsLink} target="_blank" aria-label="Threads profile link" className="hover:opacity-75 border border-stone-50 p-2 rounded-full flex items-center justify-center w-10 h-10">
 						<FaThreads className="h-6" />
 					</a>
-				</div>
+				</div> */}
 			</div>
 
 		</div>

@@ -35,12 +35,21 @@ export function ProjectCard( {title, description, image, techStack, webLink, git
 
 			<div className="flex w-full justify-end px-4">
 				{gitLink && (
-					<a href={gitLink} target="_blank" aria-label={`Live website link for ${title} project`} className="hover:opacity-75 p-2 flex items-center justify-center">
+					<a	href={gitLink}
+						target="_blank"
+						rel="noreferrer"
+						aria-label={`Live website link for ${title} project`}
+						className="hover:opacity-75 p-2 flex items-center justify-center"
+					>
 						<IoLogoGithub className="h-10 w-10" />
 					</a>
 				)}
 				{webLink && (
-					<a href={webLink} target="_blank" aria-label={`GitHub link for ${title} project`} className="hover:opacity-75 p-2 flex items-center justify-center">
+					<a	href={webLink}
+						target="_blank"
+						rel="noreferrer"
+						aria-label={`GitHub link for ${title} project`}
+						className="hover:opacity-75 p-2 flex items-center justify-center">
 						<TbWorld className="h-10 w-10" />
 					</a>
 				)}
