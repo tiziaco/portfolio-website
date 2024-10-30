@@ -73,7 +73,7 @@ export const BentoGridItem: React.FC<BentoGridItemProps> = ({
 				</div>
 			)}
 			{description && (
-				<div className="font-sans font-light text-base text-[#C1C2D3]">
+				<div className="whitespace-pre-line font-sans font-light text-base text-[#C1C2D3]">
 					{description}
 				</div>
 			)}
