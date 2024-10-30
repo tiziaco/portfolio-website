@@ -7,7 +7,7 @@ import Background from "@/components/Background";
 import { ThemeProvider } from "@/components/ThemeProvider"
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
+import GoogleAnalytics from "@/components/scripts/GoogleAnalytics";
 
 
 const inter = Inter({subsets: ["latin"]})
