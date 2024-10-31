@@ -47,39 +47,39 @@ function ContactFormContent({ setIsEmailSent } : SentEmailState) {
 	};
 
 	return (
-		<div className="contact-form flex flex-col justify-center items-center pt-10">
+		<div className="flex flex-col justify-center items-center pt-10">
 			<form onSubmit={handleSubmit} className='form_container glassmorphism'>
 				
 				<div>
-					<label>Fullname</label>
+					<label className='pl-3'>Fullname</label>
 					<input
 						type="text"
 						value={fullname}
 						onChange={(e) => setFullname(e.target.value)}
 						required
 						aria-label="Full name"
-						className='form_input'
+						className='form_input form_highlight'
 					/>
 				</div>
 				<div>
-					<label>Email</label>
+					<label className='pl-3'>Email</label>
 					<input
 						type="email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required
 						aria-label="Email"
-						className='form_input'
+						className='form_input form_highlight'
 					/>
 				</div>
 				<div>
-					<label>Message</label>
+					<label className='pl-3'>Message</label>
 					<textarea
 						value={message}
 						onChange={(e) => setMessage(e.target.value)}
 						required
 						aria-label="Message"
-						className='form_textarea'
+						className='form_textarea form_highlight'
 					/>
 				</div>
 
