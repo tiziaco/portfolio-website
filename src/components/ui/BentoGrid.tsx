@@ -48,18 +48,18 @@ export const BentoGridItem: React.FC<BentoGridItemProps> = ({
 	const renderImage = (imageSrc?: string, imgClass?: string, containerClass?: string) => (
 		<div className={cn(containerClass, 'relative w-full h-full')}>
 			{imageSrc && (
-			<div className="absolute inset-4">
-			<Image
-				src={imageSrc}
-				alt={imageSrc}
-				fill
-				className={cn(imgClass, 'rounded-2xl object-cover object-center')}
-				style={{ 
-				objectFit: id === 1 ? 'contain' : 'cover',
-				objectPosition: 'center'
-				}}
-				/>
-			</div>
+				<div className="absolute inset-2 bottom-0 ">
+				<Image
+					src={imageSrc}
+					alt={imageSrc}
+					fill
+					className={cn(imgClass, 'object-cover object-center')}
+					style={{ 
+					objectFit: id === 1 ? 'contain' : 'cover',
+					objectPosition: 'center'
+					}}
+					/>
+				</div>
 			)}
 		</div>
 		);
@@ -68,13 +68,13 @@ export const BentoGridItem: React.FC<BentoGridItemProps> = ({
 		<div className="z-10 flex flex-col p-5 md:p-10 justify-center items-center absolute inset-0">
 			{title &&(
 				<div className={cn(titleClassName,
-					"font-sans text-lg lg:text-3xl font-bold")}>
-					{title}
+					"font-sans text-xl text-gray-100 md:text-2xl lg:text-3xl font-bold")}>
+					<h3>{title}</h3>
 				</div>
 			)}
 			{description && (
-				<div className="whitespace-pre-line font-sans font-light text-base text-[#C1C2D3]">
-					{description}
+				<div className="whitespace-pre-line font-sans font-medium text-base lg:text-lg text-[rgb(193,194,211)]">
+					<p>{description}</p>
 				</div>
 			)}
 		</div>
@@ -83,11 +83,11 @@ export const BentoGridItem: React.FC<BentoGridItemProps> = ({
 	const renderLayoutForID4 = () => (
 		<div className="flex flex-col md:flex-row justify-between items-start p-5 lg:p-10 z-10">
 			<div className="flex-1 md:pr-4">
-				<div className="font-sans text-lg lg:text-3xl max-w-96 font-bold">
-					{title}
+				<div className="font-sans text-xl md:text-2xl lg:text-3xl max-w-96 font-bold">
+					<h3>{title}</h3>
 				</div>
-				<div className="font-sans font-light text-base text-[#C1C2D3]">
-					{description}
+				<div className="pt-5 font-sans font-medium text-base lg:text-lg text-[rgb(193,194,211)]">
+					<p>{description}</p>
 				</div>
 			</div>
 			<div className="flex-1 flex justify-end">
