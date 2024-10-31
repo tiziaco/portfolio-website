@@ -15,10 +15,10 @@ const Hero: React.FC = () => {
 	const { containerVariants, itemVariants, wordVariants } = useAnimationVariants();
 
 	return (
-		<div className="flex flex-col items-center justify-center">
+		<div className="flex flex-col items-center justify-center min-h-lvh">
 			<AnimatedContainer
 				variants={containerVariants}
-				className='relative my-20 z-10 pb-20 pt-10 max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center'
+				className='relative z-10 max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center min-h-screen'
 			>
 					<AnimatedItem
 						variants={wordVariants}
