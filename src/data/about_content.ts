@@ -11,7 +11,7 @@ export const gridItems = [
 		title: "",
 		description: "",
 		className: "lg:col-span-2 md:col-span-2 md:row-span-5",
-		imgClassName: "justify-center items-center rounded-full shadow-lg w-full h-auto",
+		imgClassName: "justify-center items-center shadow-lg w-full h-auto",
 		titleClassName: "",
 		img: "/avatar.png",
 		spareImg: "",
