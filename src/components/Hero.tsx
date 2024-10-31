@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
 						</HighlightText>
 					</AnimatedItem>
 
-					<AnimatedItem variants={itemVariants}>
+					<AnimatedItem variants={itemVariants} className='mt-10'>
 						<SocialLinks
 							linkedinLink={linkedinLink}
 							gitLink={gitLink}
