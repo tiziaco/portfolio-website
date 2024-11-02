@@ -1,3 +1,5 @@
+proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=STATIC:10m inactive=7d use_temp_path=off;
+
 server_tokens off;
 
 upstream next_app {
@@ -70,20 +72,33 @@ server {
 
     # Serve static files from the .next folder
     location /_next/static/ {
-        alias /app/.next/static/;  # Path to the .next folder in your container
-        expires 1y;
-        add_header Cache-Control "public, max-age=31536000, immutable";
+        proxy_cache STATIC;
+        alias /app/.next/static/;
         access_log off;
+
+        # For testing cache - remove before deploying to production
+        add_header X-Cache-Status ${DOLLAR}upstream_cache_status;
     }
 
+    # Static assets from public folder
+    location ~* ^/.*\\.(?:jpg|jpeg|gif|png|ico|cur|gz|svg|ttf)${DOLLAR} {
+        proxy_cache STATIC;
+        proxy_ignore_headers Cache-Control;
+        proxy_cache_valid 60m;
+        proxy_pass http://next_app;
+
+        # For testing cache - remove before deploying to production
+        add_header X-Cache-Status ${DOLLAR}upstream_cache_status;
+    }
+
+    # All other requests go to Next.js container
     location / {
         proxy_pass http://next_app;
         proxy_redirect off;
         proxy_set_header X-Forwarded-Proto ${DOLLAR}scheme;
         proxy_set_header Host ${DOLLAR}host;
-        proxy_set_header X-Real-IP ${DOLLAR}remote_addr;   # This passes the real client IP to Django
+        proxy_set_header X-Real-IP ${DOLLAR}remote_addr;   # This passes the real client IP to the next app
         proxy_set_header X-Forwarded-For ${DOLLAR}proxy_add_x_forwarded_for; # Keeps track of the real client IP
-        proxy_set_header X-CSRFToken ${DOLLAR}http_x_csrf_token;
         gzip_proxied any;
     }
 }
