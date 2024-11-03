@@ -17,7 +17,7 @@ export function ProjectCard( {title, description, image, techStack, webLink, git
 	})
 	{
 	return (
-	<Card className="glassmorphism">
+	<Card className="glassmorphism w-full">
 		<CardImgContainer>
 			<Image
 				fill={true}
@@ -27,7 +27,7 @@ export function ProjectCard( {title, description, image, techStack, webLink, git
 				className="object-cover z-10 absolute top-0"
 			/>
 		</CardImgContainer>
-			<div className="flex flex-col items-center flex-grow mt-7 px-4">
+			<div className="flex flex-col items-center flex-grow mt-7 px-8">
 				<CardTitle>{title}</CardTitle>
 				<PillBadges items={techStack} />
 				<CardDescription>{description}</CardDescription>
@@ -70,7 +70,7 @@ export const Card = ({
 	return (
 	<div
 		className={cn(
-		"lg:min-h-[32.5rem] h-[30rem] flex flex-col pb-6 rounded-xl items-center justify-center sm:w-96 w-[80vw] bg-[#13162D] group",
+		"flex flex-col pb-6 rounded-xl items-center justify-center bg-[#13162D] group",
 		className
 		)}
 	>
@@ -108,7 +108,7 @@ export const CardDescription = ({
 	return (
 	<p
 		className={cn(
-		"text-sm font-normal pt-4 text-neutral-800 dark:text-neutral-200 max-w-sm",
+		"font-medium pt-4 text-neutral-800 dark:text-[rgb(193,194,211)]",
 		className
 		)}
 	>
@@ -127,7 +127,7 @@ export const CardImgContainer = ({
 	return (
 	<div
 		className={cn(
-		"relative w-full h-[50%] lg:h-[40%] overflow-hidden rounded-t-xl",
+		"relative w-full h-48 lg:h-56 overflow-hidden rounded-t-xl",
 		className,
 		"bg-[#13162D] dark:bg-[rgba(40,40,40,0.70)]"
 		)}
