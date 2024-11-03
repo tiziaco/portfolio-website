@@ -13,8 +13,8 @@ import GoogleAnalytics from "@/components/scripts/GoogleAnalytics";
 const inter = Inter({subsets: ["latin"]})
 
 export const metadata: Metadata = {
-	title: "Tiziano | Full-Stack Developer & Software Engineer Portfolio",
-	description: "Explore Tiziano's portfolio: Full-Stack developer skilled in modern technologies like Next.js, JavaScript, Python and Docker. Explore projects, case studies, and experience in building scalable web applications and software solutions.",
+	title: "Tiziano's portfolio | Software Engineer",
+	description: "Welcome to Tiziano’s portfolio—a showcase of software and web development expertise. Discover projects in data-intensive and AI-powered solutions, crafted with a focus on innovation and scalability.",
 	keywords: ["Software Engineer", "Full-Stack Developer", "DevOps", "AI", "JavaScript", "Python", "Next.js", "Docker", "Web Development", "Portfolio"],
 	authors: [{ name: "Tiziano Iacovelli", url: "https://www.developertiz.com" }],
 	creator: "Tiziano Iacovelli",
