@@ -9,7 +9,11 @@ module.exports = {
             {
                 userAgent: '*',
                 allow: '/',
-            }
+            },
+            {
+                userAgent: '*',
+                disallow: '/_next/',
+            },
         ]
     }
-}
+};
