@@ -1,35 +1,32 @@
 import { projects } from "@/data/projects"
 import { ProjectCard } from "./ui/ProjectCard"
+import { BentoGrid } from "./ui/BentoGrid"
+import { ShiftedGrid } from "./ui/ShiftedGrid"
 
 
 const Projects = () => {
   return (
-	<section id='projects'>
+	<section id="projects">
 		<div className="py-20">
-			{/* Section title */}
 			<h2 className="heading">
-				Here some of my {' '}
-				<span className="text-green-500 drop-shadow-3xl">recent projects</span>
+			Here are some of my{' '}
+			<span className="text-green-500 drop-shadow-3xl">recent projects</span>
 			</h2>
 
 			{/* Project cards */}
-			<div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
-				{projects.map((project) => (
-					<div key={project.id}
-						className="lg:min-h-[32.5rem] h-[30rem] flex items-center justify-center sm:w-96 w-[80vw]"
-					>
-
-						<ProjectCard
-							title={project.title}
-							description={project.des}
-							image={project.img}
-							techStack={project.techStack}
-							webLink={project.webLink}
-							gitLink={project.gitLink}
-						/>
-					</div>
-					))}
-			</div>
+			<ShiftedGrid className="md:p-0 lg:p-10 mt-10">
+			{projects.map((project) => (
+				<ProjectCard
+				key={project.id}
+				title={project.title}
+				description={project.des}
+				image={project.img}
+				techStack={project.techStack}
+				webLink={project.webLink}
+				gitLink={project.gitLink}
+				/>
+			))}
+			</ShiftedGrid>
 		</div>
 	</section>
   )
