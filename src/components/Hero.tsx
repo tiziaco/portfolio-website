@@ -22,14 +22,14 @@ const Hero: React.FC = () => {
 			>
 					<AnimatedItem
 						variants={wordVariants}
-						className="text-center md:tracking-wider mb-4 text-lg md:text-lg lg:text-3xl"
+						className="text-center md:tracking-wider my-4 text-lg md:text-lg lg:text-3xl"
 					>
 						<p>Hey there, I&apos;m Tiziano!</p>
 					</AnimatedItem>
 					
 					<AnimatedItem
 						variants={wordVariants}
-						className="md:tracking-wider mb-4 "
+						className="md:tracking-wider my-4 "
 					>
 						<HighlightText
 							as='h1'
