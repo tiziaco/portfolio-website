@@ -1,75 +1,151 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import ContactFormContent from './ContactFormContent';
-import { getEnvVariables } from '@/actions/getVars';
+import { useState } from 'react';
+import { z } from "zod";
+import { useReCaptcha } from "next-recaptcha-v3";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { sendContactForm } from '@/actions/sendEmail';
+import { SubmitFormButton } from '@/components/ui/submit-button';
+import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea'; 
+import { toast } from "sonner";
 
-// Helper function to fetch environment variables 
+// Form validation schema
+const formSchema = z.object({
+  fullname: z.string().min(2, { message: "Name must be at least 2 characters" }),
+  email: z.string().email({ message: "Invalid email address" }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters" })
+});
 
-export default function ContactForm() {
-  const [reCaptchaKey, setReCaptchaKey] = useState<string>('');
-  const [isLoading, setIsLoading] = useState(true);
+type FormValues = z.infer<typeof formSchema>;
 
-  // Fetch reCAPTCHA key on component mount
-  useEffect(() => {
-	async function fetchEnvVariables() {
-	  try {
-		const envVars = await getEnvVariables();
-		const siteKey = envVars.RECAPTCHA_SITE_KEY;
-		
-		if (siteKey) {
-		  setReCaptchaKey(siteKey);
-		} else {
-		  toast.error('reCAPTCHA configuration error');
-		}
-	  } catch (error) {
-		toast.error('Failed to load reCAPTCHA');
-		console.error('reCAPTCHA loading error:', error);
-	  } finally {
-		setIsLoading(false);
-	  }
-	}
+export function ContactForm() {
+  const { executeRecaptcha } = useReCaptcha();
+  const [isPending, setIsPending] = useState(false);
 
-	fetchEnvVariables();
-  }, []);
+  // Initialize form with react-hook-form
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      fullname: "",
+      email: "",
+      message: ""
+    }
+  });
 
-  // Render loading or error states
-  if (isLoading) {
-	return <p>Loading contact form...</p>;
-  }
+  // Form submission handler
+  const onSubmit = async (values: FormValues) => {
+    setIsPending(true);
+    
+    if (!executeRecaptcha) {
+      toast.error('reCAPTCHA not loaded');
+      setIsPending(false);
+      return;
+    }
 
-  // Ensure we have a valid reCAPTCHA key
-  if (!reCaptchaKey) {
-	return <p>Unable to load contact form. Please try again later.</p>;
-  }
+    try {
+      const token = await executeRecaptcha('contact_form');
+      const formData = new FormData();
+      
+      // Append form values to FormData
+      formData.append('fullname', values.fullname);
+      formData.append('email', values.email);
+      formData.append('message', values.message);
+      formData.append('token', token);
+      
+      // Send the form data
+      const result = await sendContactForm({ success: false, message: '' }, formData);
+      
+      if (result.success) {
+        toast.success(result.message);
+        form.reset();
+      } else {
+        toast.error(result.message || 'Something went wrong');
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error('An error occurred while sending the message');
+    } finally {
+      setIsPending(false);
+    }
+  };
 
   return (
-	<>
-	  <GoogleReCaptchaProvider 
-		reCaptchaKey={reCaptchaKey}
-		scriptProps={{
-		  async: true,
-		  defer: true,
-		  appendTo: 'head'
-		}}
-	  >
-		<ContactFormContent />
-	  </GoogleReCaptchaProvider>
-	  
-	  <ToastContainer 
-		position="top-right"
-		autoClose={2000}
-		hideProgressBar={false}
-		newestOnTop={false}
-		closeOnClick
-		rtl={false}
-		pauseOnFocusLoss
-		draggable
-		pauseOnHover
-	  />
-	</>
+    <div className="flex flex-col justify-center items-center pt-10 w-full">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 w-full max-w-md" method='POST'>
+          <FormField
+            control={form.control}
+            name="fullname"
+            render={({ field }) => (
+              <FormItem className="space-y-1">
+                <FormLabel className="pl-3 text-sm text-muted-foreground">Full Name</FormLabel>
+                <FormControl>
+                  <Input 
+                    placeholder="Your name"
+                    className="form_input form_highlight"
+                    {...field} 
+                  />
+                </FormControl>
+                <div className="min-h-[20px]">
+                  <FormMessage />
+                </div>
+              </FormItem>
+            )}
+          />
+          
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem className="space-y-1">
+                <FormLabel className="pl-3 text-sm text-muted-foreground">Email</FormLabel>
+                <FormControl>
+                  <Input 
+                    placeholder="your@email.com"
+                    type="email"
+                    className="form_input form_highlight"
+                    {...field} 
+                  />
+                </FormControl>
+                <div className="min-h-[20px]">
+                  <FormMessage />
+                </div>
+              </FormItem>
+            )}
+          />
+          
+          <FormField
+            control={form.control}
+            name="message"
+            render={({ field }) => (
+              <FormItem className="space-y-1">
+                <FormLabel className="pl-3 text-sm text-muted-foreground">Message</FormLabel>
+                <FormControl>
+                  <Textarea 
+                    placeholder="Your message"
+                    className="form_textarea form_highlight"
+                    {...field} 
+                  />
+                </FormControl>
+                <div className="min-h-[20px]">
+                  <FormMessage />
+                </div>
+              </FormItem>
+            )}
+          />
+          
+          <div className="flex justify-end">
+            <SubmitFormButton
+              text="Send Message"
+              isLoading={isPending}
+            />
+          </div>
+        </form>
+      </Form>
+    </div>
   );
 }
+
