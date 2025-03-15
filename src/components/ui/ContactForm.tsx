@@ -5,13 +5,9 @@ import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ContactFormContent from './ContactFormContent';
+import { getEnvVariables } from '@/actions/getVars';
 
 // Helper function to fetch environment variables 
-async function getEnvVariables() {
-  return {
-	RECAPTCHA_SITE_KEY: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''
-  };
-}
 
 export default function ContactForm() {
   const [reCaptchaKey, setReCaptchaKey] = useState<string>('');
