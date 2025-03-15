@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,14 +22,35 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@styles/*": ["./src/styles/*"],
-      "@types/*": ["./src/types/*"],
-      "@components/*": ["./src/components/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@public/*": ["./public/*"]
-    }
+      "@/*": [
+        "./src/*"
+      ],
+      "@styles/*": [
+        "./src/styles/*"
+      ],
+      "@types/*": [
+        "./src/types/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@public/*": [
+        "./public/*"
+      ]
+    },
+    "target": "ES2017"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "**/*.cjs"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "**/*.cjs"
+, "postcss.config.mjs"  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
