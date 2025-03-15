@@ -10,29 +10,6 @@ const ContactFormSchema = z.object({
 	message: z.string().min(10, { message: "Message must be at least 10 characters" })
 });
 
-// Recaptcha Verification
-async function verifyRecaptcha(token: string): Promise<boolean> {
-	try {
-		const secretKey = process.env.RECAPTCHA_SECRET_KEY;
-		const verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
-
-		const response = await fetch(verifyUrl, {
-		method: 'POST',
-		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-		body: new URLSearchParams({
-			secret: secretKey || '',
-			response: token
-		})
-		});
-
-		const data = await response.json();
-		return data.success && data.score > 0.7;
-	} catch (error) {
-		console.error('reCAPTCHA verification error:', error);
-		return false;
-	}
-}
-
 // Email Transport Configuration
 function createEmailTransporter() {
 	return nodemailer.createTransport({
@@ -47,6 +24,28 @@ function createEmailTransporter() {
 	});
 }
 
+// Add this function to verify the reCAPTCHA token
+async function verifyRecaptcha(token: string): Promise<boolean> {
+	if (!token) return false;
+	
+	try {
+		// Call your API endpoint to verify the token
+		const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/recaptcha`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({ token }),
+		});
+		
+		const data = await response.json();
+		return data.message === 'Success';
+	} catch (error) {
+		console.error('reCAPTCHA verification error:', error);
+		return false;
+	}
+}
+
 // Main Send Contact Form Action
 export async function sendContactForm(
 	prevState: { success: boolean; message: string },
@@ -54,10 +53,10 @@ export async function sendContactForm(
 ) {
 	// Parse form data
 	const rawFormData = {
-		fullname: formData.get('fullname'),
-		email: formData.get('email'),
-		message: formData.get('message'),
-		token: formData.get('token')
+		fullname: formData.get('fullname')?.toString() || '',
+		email: formData.get('email')?.toString() || '',
+		message: formData.get('message')?.toString() || '',
+		token: formData.get('token')?.toString() || ''
 	};
 
 	// Validate input
@@ -87,19 +86,42 @@ export async function sendContactForm(
 
 	try {
 		const transporter = createEmailTransporter();
-		
+
+		// Send notification email to site owner
+		console.debug('Sending email to site owner...');
 		await transporter.sendMail({
-		from: process.env.SMTP_EMAIL_USER, // Sender's email
-		replyTo: rawFormData.email as string, // Set reply-to as sender's email
-		to: process.env.SMTP_EMAIL_USER,
-		subject: `New Contact Form: Message from ${rawFormData.fullname}`,
-		text: `
-			Name: ${rawFormData.fullname}
-			Email: ${rawFormData.email}
-			
-			Message:
-			${rawFormData.message}
-		`
+			from: process.env.SMTP_EMAIL_USER,
+			replyTo: rawFormData.email,
+			to: process.env.SMTP_EMAIL_USER,
+			subject: `New Contact Form: Message from ${rawFormData.fullname}`,
+			text: `
+				Name: ${rawFormData.fullname}
+				Email: ${rawFormData.email}
+				
+				Message:
+				${rawFormData.message}
+			`
+		});
+
+		// Send confirmation email to the sender
+		console.debug('Sending confirmation email to the sender...');
+		await transporter.sendMail({
+			from: process.env.SMTP_EMAIL_USER,
+			to: rawFormData.email,
+			subject: `Thank you for contacting me`,
+			html: `
+				<div style="font-family: Arial, sans-serif; max-width: 600px;">
+				<h2>Thank you for contacting us!</h2>
+				<p>Dear ${rawFormData.fullname},</p>
+				<p>We have received your message and will respond as soon as possible.</p>
+				<div style="margin: 20px 0; padding: 15px; background-color: #f7f7f7; border-left: 4px solid #007bff;">
+				<p><strong>Your message:</strong></p>
+				<p>${rawFormData.message.replace(/\n/g, '<br>')}</p>
+				</div>
+				<p>Best regards,<br>Genie.Knowledge Team</p>
+				<img src="${process.env.NEXT_PUBLIC_APP_URL}/images/genie_logo.png" alt="Genie.Knowledge Logo" style="display: block; margin: 0; width: 50px; height: 50px;">
+				</div>
+			`
 		});
 
 		return {
