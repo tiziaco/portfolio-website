@@ -15,8 +15,8 @@ const About = () => {
 				<BentoGrid className="py-20 px-0 md:px-10 gap-4 lg:gap-8 grid-cols-1 md:grid-cols-4 lg:grid-cols-8">
 					{gridItems.map((item, i) => (
 						<BentoGridItem
-							id={item.id}
 							key={i}
+							id={item.id}
 							title={item.title}
 							description={item.description}
 							className={item.className}
