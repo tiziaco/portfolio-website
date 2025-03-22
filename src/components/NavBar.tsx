@@ -7,6 +7,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Logo from "@public/my_logo.svg";
 import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
+import { ThemeToggle } from "./ui/theme-toggle";
 
 
 const navItems = [
@@ -57,6 +58,7 @@ const NavBar = () => {
 						{item.name.toLocaleUpperCase()}
 					</Link>
 				))}
+				<ThemeToggle />
 				</div>
 			</div>
 	
