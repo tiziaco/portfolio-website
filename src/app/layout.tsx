@@ -1,14 +1,16 @@
-import type { Metadata } from "next";
-import {Inter} from "next/font/google"
 
 import '@styles/globals.css';
 import '@styles/background.scss';
+
+import { Inter } from "next/font/google"
+import { Toaster } from "@/components/ui/sonner"
 import Background from "@/components/Background";
 import { ThemeProvider } from "@/components/ThemeProvider"
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import GoogleAnalytics from "@/components/scripts/GoogleAnalytics";
 
+import type { Metadata } from "next";
 
 const inter = Inter({subsets: ["latin"]})
 
@@ -67,7 +69,7 @@ export default function RootLayout({children,}: Readonly<{
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning>
 			<GoogleAnalytics />
 			<body className={`${inter.className} antialiased`}>
 				<ThemeProvider
@@ -84,6 +86,7 @@ export default function RootLayout({children,}: Readonly<{
 						{children}
 					</main>
 					<Footer />
+					<Toaster />
 				</ThemeProvider>
 			</body>
 		</html>
