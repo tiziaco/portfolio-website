@@ -25,10 +25,10 @@ export const BentoGrid = ({
 };
 
 interface BentoGridItemProps {
-	className?: string;
 	id: number;
 	title?: string | React.ReactNode;
 	description?: string | React.ReactNode;
+	className?: string;
 	img?: string;
 	imgClassName?: string;
 	titleClassName?: string;
@@ -36,10 +36,10 @@ interface BentoGridItemProps {
 }
 
 export const BentoGridItem: React.FC<BentoGridItemProps> = ({
-	className,
 	id,
 	title,
 	description,
+	className,
 	img,
 	imgClassName,
 	titleClassName,
@@ -95,6 +95,10 @@ export const BentoGridItem: React.FC<BentoGridItemProps> = ({
 			</div>
 		</div>
 	);
+
+	console.log(id);
+	console.log(title);
+	console.log(cn('min-h-[200px]', className));
   
 	return (
 		<div
