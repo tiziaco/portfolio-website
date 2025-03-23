@@ -1,6 +1,5 @@
 import { projects } from "@/data/projects"
 import { ProjectCard } from "./ui/ProjectCard"
-import { BentoGrid } from "./ui/BentoGrid"
 import { ShiftedGrid } from "./ui/ShiftedGrid"
 
 
