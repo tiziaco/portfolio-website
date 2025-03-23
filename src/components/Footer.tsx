@@ -1,19 +1,15 @@
 "use client"
 
 import Link from "next/link";
-import Image from "next/image";
 
 import Logo from "@public/my_logo.svg";
-import { FaLinkedinIn } from "react-icons/fa6";
-import { TbBrandGithubFilled } from "react-icons/tb";
-import { FaThreads } from "react-icons/fa6";
 import { gitLink, linkedinLink, threadsLink, mediumLink } from "@/data/about_content";
 import SocialLinks from "./ui/SocialLinks";
 
 
 export const Footer = () => {
-	let date = new Date();
-	let currentYear = date.getFullYear();
+	const date = new Date();
+	const currentYear = date.getFullYear();
 
 	return (
 	<footer className="bg-[#13162D]">
