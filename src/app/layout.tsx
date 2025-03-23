@@ -2,6 +2,7 @@
 import '@styles/globals.css';
 import '@styles/background.scss';
 
+import { Suspense } from 'react';
 import { Inter } from "next/font/google"
 import { Toaster } from "@/components/ui/sonner"
 import Background from "@/components/Background";
@@ -70,7 +71,11 @@ export default function RootLayout({children,}: Readonly<{
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<GoogleAnalytics />
+			<Suspense fallback={null}>
+				<GoogleAnalytics
+				GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''}
+				/>
+			</Suspense>
 			<body className={`${inter.className} antialiased`}>
 				<ThemeProvider
 					attribute="class"
