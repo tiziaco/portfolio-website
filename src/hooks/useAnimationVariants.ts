@@ -1,6 +1,5 @@
-"USe client"
+"use client"
 
-import { Variant } from "framer-motion";
 import { AnimationVariants } from "@/types/animation";
 
 export const useAnimationVariants = () => {
