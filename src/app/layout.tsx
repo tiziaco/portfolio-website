@@ -61,9 +61,15 @@ export const metadata: Metadata = {
 		creator: "@Tiz_iaco",
 		images: ["https://developertiz.com/og_image.png"],
 		},
-	icons: {
-		icon: '/favicon.ico',
-	},
+		icons: {
+			icon: [
+			  { url: '/icons/favicon-16x16.ico', sizes: '16x16', type: 'image/x-icon' },
+			  { url: '/icons/favicon-32x32.ico', sizes: '32x32', type: 'image/x-icon' }
+			],
+			apple: [
+			  { url: '/icons/apple-touch-icon.png', sizes: '180x180' }
+			]
+		},
 };
 
 export default function RootLayout({children,}: Readonly<{
