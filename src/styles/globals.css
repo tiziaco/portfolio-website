@@ -88,6 +88,12 @@ h1.inline {
 	.heading {
 	  @apply font-bold text-4xl md:text-5xl text-center;
 	}
+
+	*:focus-visible {
+		outline: none !important;
+		border-color: var(--primary) !important;
+		box-shadow: 0 0 0 2px var(--primary) !important;
+	  }
 }
 
 /* Nav Component */
