@@ -9,12 +9,12 @@ interface SubmitFormButtonProps {
   export function SubmitFormButton({ text, isLoading }: SubmitFormButtonProps) {
 	if (isLoading) {
 	  return (
-		<Button disabled>
+		<Button variant="default" disabled>
 		  <Loader2 className="animate-spin" />
 		  {text}
 		</Button>
 	  );
 	}
 	
-	return <Button type="submit">{text}</Button>;
+	return <Button variant="default" type="submit">{text}</Button>;
   }
