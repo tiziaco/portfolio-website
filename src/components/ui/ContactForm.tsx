@@ -75,7 +75,7 @@ export function ContactForm() {
   return (
     <div className="flex flex-col justify-center items-center pt-10 w-full">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 w-full max-w-md" method='POST'>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 w-full max-w-md form_container glassmorphism" method='POST'>
           <FormField
             control={form.control}
             name="fullname"
