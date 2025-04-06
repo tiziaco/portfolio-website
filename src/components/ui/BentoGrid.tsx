@@ -24,7 +24,7 @@ interface BentoGridProps {
 
 export default function BentoGrid({ items }: BentoGridProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-8 gap-4 p-4">
+    <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-8 gap-4 p-4 mt-10">
       {items.map((item) => (
         <BentoGridItem key={item.id} item={item} />
       ))}
