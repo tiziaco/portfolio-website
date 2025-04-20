@@ -32,7 +32,7 @@ h1.inline {
   :root {
 		--background: 0 0% 100%;
 		--foreground: 0 0% 3.9%;
-		--card: 0 0% 100%;
+		--card: 255,255,255;
 		--card-foreground: 0 0% 3.9%;
 		--popover: 0 0% 100%;
 		--popover-foreground: 0 0% 3.9%;
@@ -55,11 +55,21 @@ h1.inline {
 		--chart-4: 43 74% 66%;
 		--chart-5: 27 87% 67%;
 		--radius: 0.5rem;
+
+		/* Background animation colors - Light theme */
+		--color-bg1: 255, 248, 248;
+		--color-bg2: 246, 240, 240;
+		--color1: 18, 113, 255;
+		--color2: 221, 74, 255;
+		--color3: 100, 220, 255;
+		--color4: 200, 50, 50;
+		--color5: 180, 180, 50;
+		--color-interactive: 140, 100, 255;
 	}
   .dark {
 		--background: 0 0% 3.9%;
 		--foreground: 0 0% 98%;
-		--card: 0 0% 3.9%;
+		--card: 19,22,45;
 		--card-foreground: 0 0% 98%;
 		--popover: 0 0% 3.9%;
 		--popover-foreground: 0 0% 98%;
@@ -81,6 +91,16 @@ h1.inline {
 		--chart-3: 30 80% 55%;
 		--chart-4: 280 65% 60%;
 		--chart-5: 340 75% 55%;
+
+		/* Background animation colors - Dark theme */
+		--color-bg1: 20, 0, 50;
+		--color-bg2: 0, 10, 30;
+		--color1: 45, 70, 180;
+		--color2: 150, 60, 180;
+		--color3: 60, 130, 180;
+		--color4: 120, 40, 80;
+		--color5: 80, 80, 120;
+		--color-interactive: 100, 80, 200;
 	}
 }
 
@@ -111,7 +131,7 @@ h1.inline {
 
 /* Form Component */
 .glassmorphism {
-	@apply rounded-xl bg-[#13162D]/80 shadow-[inset_10px_-50px_94px_0_rgb(19,22,45,0.2)] backdrop-blur;
+	@apply rounded-xl bg-card shadow-[inset_10px_-50px_94px_0_rgb(var(--card))] backdrop-blur;
 }
 
 .form_container {
