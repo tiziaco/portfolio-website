@@ -28,29 +28,31 @@ export function ThemeToggle() {
   return (
     <div
       onClick={toggleTheme}
-      className="relative flex h-8 w-16 cursor-pointer items-center rounded-full bg-gray-200 p-1"
+      className={`relative flex h-6 w-12 cursor-pointer items-center rounded-full p-1 transition-colors ${
+        isDark ? 'dark:bg-gray-700' : 'bg-gray-200'
+      }`}
     >
       {/* Sun and Moon icons in background */}
-      <div className="absolute left-2">
-        <Sun className="h-4 w-4 text-gray-400" />
+      <div className="absolute left-1.5">
+        <Sun className="h-3.5 w-3.5 text-gray-400" />
       </div>
-      <div className="absolute right-2">
-        <Moon className="h-4 w-4 text-gray-400" />
+      <div className="absolute right-1.5">
+        <Moon className="h-3.5 w-3.5 text-gray-400" />
       </div>
 
       {/* Toggle circle with icon */}
       <motion.div
-        className="absolute flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-md"
+        className="absolute flex h-4 w-4 items-center justify-center rounded-full bg-white shadow-md"
         animate={{
-          x: isDark ? 33 : 1,
+          x: isDark ? 24 : 1,
         }}
         initial={false}
         transition={{ type: "spring", stiffness: 500, damping: 30 }}
       >
         {isDark ? (
-          <Moon className="h-4 w-4 text-gray-700" />
+          <Moon className="h-3.5 w-3.5 text-purple-500" />
         ) : (
-          <Sun className="h-4 w-4 text-amber-500" />
+          <Sun className="h-3.5 w-3.5 text-amber-400" />
         )}
       </motion.div>
     </div>
