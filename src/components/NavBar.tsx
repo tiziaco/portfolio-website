@@ -24,7 +24,7 @@ const NavBar = () => {
 	const { scrollY } = useScroll();
 	
 	// Interpolating the background color based on scroll position
-	const backgroundColor = useTransform(scrollY, [0, 50], ["rgba(4,7,29, 0)", "rgba(4,7,29, 0.7)"]);
+	const backgroundColor = useTransform(scrollY, [0, 50], ["rgba(var(--card), 0)", "rgba(var(--card), 0.8)"]);
 	const backdropBlur = useTransform(scrollY, [0, 50], ["none", "blur(10px)"]);
 	const boxShadow = useTransform(scrollY, [0, 50], ["none", "0px 4px 10px rgba(0, 0, 0, 0.1)"]);
 
@@ -47,15 +47,15 @@ const NavBar = () => {
 			className="fixed top-0 left-0 w-full z-50 flex justify-between items-center mb-16 py-4 px-5 md:px-10 lg:px-20 transition-all duration-300"
 		>
 			<Link href="/" aria-label="link to hero section" className="flex gap-2 items-center h-8">
-				<Logo className="w-64 h-auto text-white" />
+				<Logo className="w-64 h-auto" />
 			</Link>
 	
 			{/* Desktop Navigation */}
 			<div className="sm:flex hidden">
-				<div className="flex gap-5 md:gap-10">
+				<div className="flex gap-5 md:gap-10 items-center">
 					{navItems.map((item) => (
 					<Link key={item.name} href={item.link} className="text-lg font-medium hover:text-green-500">
-						{item.name.toLocaleUpperCase()}
+						{item.name}
 					</Link>
 				))}
 				<ThemeToggle />
@@ -77,7 +77,7 @@ const NavBar = () => {
 				</button> 
 	
 				{toggleDropdown && (
-				<div className="dropdown absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2">
+				<div className="dropdown absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-background min-w-[210px] flex flex-col gap-2">
 					{/* Close Icon in Top Right Corner */}
 					<button
 						onClick={() => setToggleDropdown(false)}
