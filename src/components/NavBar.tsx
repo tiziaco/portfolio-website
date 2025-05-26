@@ -8,6 +8,7 @@ import Logo from "@public/my_logo.svg";
 import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
 import { ThemeToggle } from "./ui/theme-toggle";
+import { Button } from "./ui/button";
 
 
 const navItems = [
@@ -51,54 +52,82 @@ const NavBar = () => {
 			</Link>
 	
 			{/* Desktop Navigation */}
-			<div className="sm:flex hidden">
-				<div className="flex gap-5 md:gap-10 items-center">
+			<div className="lg:flex hidden">
+				<div className="flex gap-3 items-center">
 					{navItems.map((item) => (
-					<Link key={item.name} href={item.link} className="text-lg font-medium hover:text-green-500">
-						{item.name}
-					</Link>
-				))}
-				<ThemeToggle />
+					<Button 
+              key={item.name} 
+              variant="ghost"
+              className="font-semibold h-7"
+              asChild
+            >
+							<Link href={item.link} aria-label={`link to ${item.name} section`}>
+							{item.name}
+							</Link>
+            </Button>
+					))}
+					<ThemeToggle />
 				</div>
 			</div>
 	
 		  {/* Mobile Navigation */}
-			<div ref={dropdownRef} className="sm:hidden flex relative">
-				<button
-					onClick={() => setToggleDropdown(!toggleDropdown)}
-					className="flex items-center justify-center"
-					aria-label={toggleDropdown ? "Close dropdown navigation bar" : "Open dropdown navigation bar"}
-				>
-					{toggleDropdown ? (
-						<IoClose className="h-10 w-10"/>
-					) : (
-						<IoMenu className="h-10 w-10"/>
-					)}
-				</button> 
-	
+			<div ref={dropdownRef} className="lg:hidden flex relative">
+				{!toggleDropdown && (
+					<Button
+					onClick={() => setToggleDropdown(true)}
+					variant="ghost"
+					size="icon"
+					className="flex items-center justify-center p-0 gap-0"
+					aria-label="Open dropdown navigation bar"
+					>
+						<IoMenu className="!w-8 !h-8" />
+					</Button>
+				)}
+				
 				{toggleDropdown && (
-				<div className="dropdown absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-background min-w-[210px] flex flex-col gap-2">
+					<motion.div 
+					initial={{ x: "100%" }}
+					animate={{ x: 0 }}
+					exit={{ x: "100%" }}
+					transition={{ duration: 0.3 }}
+					className="dropdown fixed top-0 right-0 w-3/4 md:w-1/2 h-screen bg-background z-50 flex flex-col items-center justify-center overflow-y-auto"
+					>
 					{/* Close Icon in Top Right Corner */}
-					<button
+					<Button
 						onClick={() => setToggleDropdown(false)}
-						className="absolute top-3 right-3 text-white hover:text-gray-700"
+						variant="ghost"
+						size="icon"
+						className="absolute top-4 right-5 md:right-10 flex items-center justify-center"
 						aria-label="Close dropdown menu"
 					>
-						<IoClose className="h-10 w-10"/>
-					</button>
+						<IoClose className="!w-8 !h-8"/>
+					</Button>
 					
-					{/* Navigation Links */}
-					{navItems.map((item) => (
-					<Link
-						key={item.name}
-						href={item.link}
-						className="dropdown_link"
-						onClick={() => setToggleDropdown(false)}
+					{/* Navigation Links Container */}
+					<div className="flex flex-col items-center justify-center gap-8 w-full">
+						{/* Navigation Links */}
+						{navItems.map((item) => (
+						<Button 
+							key={item.name} 
+							variant="ghost"
+							className="font-semibold text-xl w-40" // Keep the text larger for mobile
+							asChild
 						>
-						{item.name.toLocaleUpperCase()}
-					</Link>
-					))}
-				</div>
+							<Link 
+							href={item.link}
+							onClick={() => setToggleDropdown(false)}
+							aria-label={`link to ${item.name} section`}
+							>
+							{item.name}
+							</Link>
+						</Button>
+						))}
+						{/* Theme Toggle */}
+						<div className="mt-4">
+							<ThemeToggle />
+						</div>
+					</div>
+					</motion.div>
 				)}
 			</div>
 		</motion.nav>
