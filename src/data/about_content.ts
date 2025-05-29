@@ -11,9 +11,9 @@ export const gridItems = [
 		title: "",
 		description: "",
 		className: "col-span-1 md:col-span-2 md:row-span-5 lg:col-span-2",
-		imgClassName: "justify-center items-center shadow-lg w-full h-auto",
+		imgClassName: "justify-center items-center w-full h-auto",
 		titleClassName: "",
-		img: "/avatar.png",
+		img: "/TII_profile_pic.png",
 		spareImg: "",
 	},
 	{
