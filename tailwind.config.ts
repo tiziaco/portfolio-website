@@ -12,10 +12,10 @@ export default {
   	extend: {
   		colors: {
   			background: 'hsl(var(--background))',
-  			foreground: 'var(--foreground)',
+  			foreground: 'hsl(var(--foreground))',
   			card: {
   				DEFAULT: 'rgb(var(--card))',
-  				foreground: 'var(--card-foreground)'
+  				foreground: 'hsl(var(--card-foreground))',
   			},
   			popover: {
   				DEFAULT: 'hsl(var(--popover))',
@@ -50,7 +50,8 @@ export default {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+  			'glassmorphism-shadow': 'rgb(var(--glassmorphism-shadow))',
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

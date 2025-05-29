@@ -31,9 +31,10 @@ h1.inline {
 	}
   :root {
 		--background: 0 0% 100%;
-		--foreground: 0 0% 3.9%;
-		--card: 255,255,255;
+		--foreground: 0 0% 15%;
+		--card: 240 240 240;
 		--card-foreground: 0 0% 3.9%;
+		--glassmorphism-shadow: 199, 199, 199;
 		--popover: 0 0% 100%;
 		--popover-foreground: 0 0% 3.9%;
 		--primary: rgb(192,132,252);
@@ -42,7 +43,7 @@ h1.inline {
 		--secondary-foreground: 0 0% 9%;
 		--muted: 0 0% 96.1%;
 		--muted-foreground: 0 0% 45.1%;
-		--accent: 0 0% 96.1%;
+		--accent: rgb(134,239,172);
 		--accent-foreground: 0 0% 9%;
 		--destructive: 0 84.2% 60.2%;
 		--destructive-foreground: 0 0% 98%;
@@ -68,9 +69,10 @@ h1.inline {
 	}
   .dark {
 		--background: 0 0% 3.9%;
-		--foreground: 0 0% 98%;
-		--card: 19,22,45;
+		--foreground: 193 11% 79%; /* Changed from "0 0% 98%" to rgb(193,194,211) in HSL */
+		--card: 19 22 45;
 		--card-foreground: 0 0% 98%;
+		--glassmorphism-shadow: 100, 100, 120;
 		--popover: 0 0% 3.9%;
 		--popover-foreground: 0 0% 98%;
 		--primary: rgb(192,132,252);
@@ -79,7 +81,7 @@ h1.inline {
 		--secondary-foreground: 0 0% 98%;
 		--muted: 0 0% 14.9%;
 		--muted-foreground: 0 0% 63.9%;
-		--accent: 0 0% 14.9%;
+		--accent: rgb(41, 62, 39);
 		--accent-foreground: 0 0% 98%;
 		--destructive: 0 62.8% 30.6%;
 		--destructive-foreground: 0 0% 98%;
@@ -130,8 +132,12 @@ h1.inline {
 }
 
 /* Form Component */
+.glassmorphism_original {
+  @apply rounded-xl border border-gray-200 bg-white/40 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5;
+}
+
 .glassmorphism {
-	@apply rounded-xl bg-card shadow-[inset_10px_-50px_94px_0_rgb(var(--card))] backdrop-blur;
+  @apply rounded-xl bg-card/80 shadow-[inset_10px_-50px_94px_0_rgba(var(--glassmorphism-shadow),0.2)] backdrop-blur;
 }
 
 .form_container {
