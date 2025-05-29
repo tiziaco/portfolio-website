@@ -25,7 +25,7 @@ const NavBar = () => {
 	const { scrollY } = useScroll();
 	
 	// Interpolating the background color based on scroll position
-	const backgroundColor = useTransform(scrollY, [0, 50], ["rgba(var(--card), 0)", "rgba(var(--card), 0.8)"]);
+	const backgroundColor = useTransform(scrollY, [0, 50], ["rgb(var(--card) / 0)", "rgb(var(--card) / 0.8)"]);
 	const backdropBlur = useTransform(scrollY, [0, 50], ["none", "blur(10px)"]);
 	const boxShadow = useTransform(scrollY, [0, 50], ["none", "0px 4px 10px rgba(0, 0, 0, 0.1)"]);
 

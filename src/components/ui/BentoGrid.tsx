@@ -49,7 +49,7 @@ function BentoGridItem({ item }: { item: GridItem }) {
       // onHoverStart={() => setHovered(true)}
       // onHoverEnd={() => setHovered(false)}
     >
-      <Card className={cn("h-full rounded-xl glassmorphism border-none flex flex-col justify-center items-center")}>
+      <Card className={cn("h-full min-h-44 rounded-xl glassmorphism border-none flex flex-col justify-center items-center")}>
         {/* Render tech stack item differently */}
         {isTechStack ? (
           <CardContent className="p-0">
@@ -58,7 +58,7 @@ function BentoGridItem({ item }: { item: GridItem }) {
                 <div className="font-sans text-xl md:text-2xl lg:text-3xl max-w-96 font-bold">
                   <h3>{item.title}</h3>
                 </div>
-                <div className="pt-5 font-sans font-medium text-base lg:text-lg text-[rgb(193,194,211)]">
+                <div className="pt-5 font-sans font-medium text-base lg:text-lg text-foreground]">
                   <p>{item.description}</p>
                 </div>
               </div>
@@ -80,7 +80,7 @@ function BentoGridItem({ item }: { item: GridItem }) {
                     <CardTitle className="text-xl md:text-2xl lg:text-3xl">{item.title}</CardTitle>
                   </CardHeader>
                 )}
-                <CardContent className="flex flex-col h-full p-4 justify-center">
+                <CardContent className="flex flex-col h-full p-4 pb-0 justify-center">
                   {item.img && (
                     <div className={cn("relative", item.imgClassName)}>
                       <Image
@@ -88,14 +88,14 @@ function BentoGridItem({ item }: { item: GridItem }) {
                         alt={item.title || `Grid item ${item.id}`}
                         width={300}
                         height={300}
-                        className="object-cover rounded-lg"
+                        className="object-cover"
                       />
                     </div>
                   )}
 
                   {/* Render description paragraphs properly */}
                   {item.description && (
-                    <div className="mt-2 font-medium text-base lg:text-lg text-[rgb(193,194,211)]">
+                    <div className="mt-2 font-medium text-base lg:text-lg text-foreground">
                       {descriptionParagraphs.map((paragraph, i) => (
                         <div key={i} className="mb-4">
                           {paragraph}
