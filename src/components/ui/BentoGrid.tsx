@@ -43,13 +43,13 @@ function BentoGridItem({ item }: { item: GridItem }) {
 
   return (
     <motion.div
-      className={cn("overflow-hidden", item.className)}
+      className={cn(item.className)} // Remove overflow-hidden from here
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.2 }}
       // onHoverStart={() => setHovered(true)}
       // onHoverEnd={() => setHovered(false)}
     >
-      <Card className={cn("h-full min-h-44 rounded-xl glassmorphism border-none flex flex-col justify-center items-center")}>
+      <Card className={cn("flex flex-col h-full min-h-44 border-none justify-center items-center glassmorphism overflow-hidden")}> {/* Add overflow-hidden to the Card instead */}
         {/* Render tech stack item differently */}
         {isTechStack ? (
           <CardContent className="p-0">
