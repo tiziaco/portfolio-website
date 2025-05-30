@@ -29,7 +29,7 @@ export const gridItems = [
 	{
 		id: 3,
 		title: "Crafting Code and Building Solutions",
-		description: "Software engineer with a unique path from civil engineering to tech, bringing together analytical expertise and a drive for innovative solutions.\n\nMy background includes large-scale engineering projects and robust backend development, complemented by data engineering and an eye for creating seamless frontend functionality. I’m dedicated to continuous learning and motivated by challenges that push my skills further. My journey reflects resilience, adaptability, and a commitment to meaningful, impactful work.",
+		description: "I’m a software engineer with a focus on AI-powered applications, designing systems that are not only intelligent, but scalable, secure, and user-centered.\n\nMy work spans backend architecture, frontend experiences, and the infrastructure that ties it all together, with a growing emphasis on integrating advanced AI capabilities into real-world products.\n\nFrom orchestrating multi-agent workflows to optimizing data-driven features, I approach each challenge with a product mindset, attention to detail, and a drive to build tools that solve meaningful problems. I thrive at the intersection of innovation and execution, where thoughtful engineering meets cutting-edge technology.",
 		className: "col-span-1 md:col-span-4 md:row-span-10 lg:col-span-4 min-h-[50vh] lg:min-h-[60vh]",
 		imgClassName: "justify-center items-center",
 		titleClassName: "justify-center items-center pb-4",
