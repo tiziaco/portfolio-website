@@ -81,7 +81,7 @@ h1.inline {
 		--secondary-foreground: 0 0% 98%;
 		--muted: 0 0% 14.9%;
 		--muted-foreground: 0 0% 63.9%;
-		--accent: rgb(41, 62, 39);
+		--accent: rgba(134, 239, 173, 0.3);
 		--accent-foreground: 0 0% 98%;
 		--destructive: 0 62.8% 30.6%;
 		--destructive-foreground: 0 0% 98%;
@@ -137,7 +137,7 @@ h1.inline {
 }
 
 .glassmorphism {
-  @apply rounded-xl bg-card/80 shadow-[inset_10px_-50px_94px_0_rgba(var(--glassmorphism-shadow),0.2)] backdrop-blur;
+  @apply rounded-xl bg-card/60 shadow-[inset_10px_-50px_94px_0_rgba(var(--glassmorphism-shadow),0.2),0_8px_32px_rgba(0,0,0,0.12),0_4px_16px_rgba(0,0,0,0.08),0_2px_8px_rgba(0,0,0,0.04)] backdrop-blur;
 }
 
 .form_container {
