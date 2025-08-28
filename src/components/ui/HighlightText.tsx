@@ -52,7 +52,7 @@ return (
 						: 'text-inherit drop-shadow-2xl'
 			}`}
 			>
-				{word}{' '}
+					{word}{'\u00A0'}
 			</span>
 		))}
 		</Component>
