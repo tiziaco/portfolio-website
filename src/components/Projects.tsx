@@ -1,16 +1,22 @@
 import { projects } from "@/data/projects"
 import { ProjectCard } from "./ui/ProjectCard"
 import { ShiftedGrid } from "./ui/ShiftedGrid"
+import HighlightText from "./ui/HighlightText"
 
 
 const Projects = () => {
   return (
 	<section id="projects">
 		<div className="py-20">
-			<h2 className="heading">
-			Here are some of my{' '}
-			<span className="text-green-500 drop-shadow-3xl">recent projects</span>
-			</h2>
+
+
+			<HighlightText as="h2"
+				className="heading"
+				highlightIndices={[5, 6]}
+			>
+				Here are some of my recent projects
+			</HighlightText>
+
 
 			{/* Project cards */}
 			<ShiftedGrid className="md:p-0 lg:p-10 mt-10">

@@ -1,15 +1,18 @@
 import { gridItems } from "@/data/about_content";
 import BentoGrid from "./ui/BentoGrid";
+import HighlightText from "./ui/HighlightText";
 
 const About = () => {
 	return (
 		<section id="about">
 			<div className="py-20">
 				{/* Section title */}
-				<h2 className="heading">
-					Something {' '}
-					<span className="text-green-500 drop-shadow-3xl">about me</span>
-				</h2>
+				<HighlightText as="h2"
+					className="heading"
+					highlightIndices={[1, 2]}
+				>
+					Something about me
+				</HighlightText>
 
 				<BentoGrid items={gridItems} />
 
